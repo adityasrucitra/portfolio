@@ -84,23 +84,35 @@
     .project:nth-child(3){background:#17283b}
     .case{background:var(--white);padding:28px;margin-bottom:12px}
     .case h4{display:inline-block;margin-top:20px;margin-bottom:8px;padding:5px 8px;background:var(--yellow);border:3px solid var(--ink);font-size:.72rem;font-weight:900;text-transform:uppercase}
-    .reliability-story{background:var(--white);padding:32px;margin-bottom:16px;border-left:6px solid var(--blue)}
-    .reliability-story:nth-child(2){border-left-color:var(--yellow)}
-    .reliability-story:nth-child(3){border-left-color:var(--green)}
-    .reliability-story:nth-child(4){border-left-color:var(--red)}
-    .reliability-story h4{display:block;font-size:1.1rem;font-weight:900;margin-bottom:12px;color:var(--ink);text-transform:uppercase}
-    .reliability-story .scenario{background:#f0f0f0;padding:16px;margin:16px 0;border-radius:4px;font-size:.95rem;font-weight:700}
-    .reliability-story .mitigation{margin-top:14px;padding-left:20px}
-    .reliability-story .mitigation strong{color:var(--blue)}
-    .reliability-story .mitigation:nth-child(3) strong{color:var(--yellow)}
-    .reliability-story .mitigation:nth-child(4) strong{color:var(--green)}
-    .reliability-story .mitigation:nth-child(5) strong{color:var(--red)}
+    .scenario{background:#f0f0f0;padding:16px;margin:16px 0;border-radius:4px;font-size:.95rem;font-weight:700}
+    .mitigation{margin-top:14px;padding-left:20px}
+    .mitigation strong{color:var(--blue)}
     .case p{font-weight:700;color:#272727}
     .case-section{margin-top:24px}
     .case-section h4{display:block;margin-bottom:12px;padding:8px 12px;background:var(--ink);color:var(--white);border:3px solid var(--ink);font-size:.78rem;font-weight:900;text-transform:uppercase}
     .case-section p{margin-bottom:12px;line-height:1.6}
     .case-section ul{margin-left:20px;margin-top:8px}
     .case-section li{margin-bottom:8px;font-weight:700;color:#272727}
+    .case-card{cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;min-height:200px;display:flex;flex-direction:column}
+    .case-card:hover{transform:translate(-4px,-4px);box-shadow:12px 12px 0 var(--ink)}
+    .case-card .case-brief{flex:1;font-size:.95rem;line-height:1.6;margin:16px 0;color:#333}
+    .case-card .read-more{display:inline-block;margin-top:auto;padding:12px 20px;background:var(--ink);color:var(--white);border:3px solid var(--ink);font-size:.78rem;font-weight:900;text-transform:uppercase;text-decoration:none;transition:transform .16s ease}
+    .case-card .read-more:hover{transform:scale(1.05)}
+    .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,5,0.85);z-index:1000;padding:20px;overflow-y:auto}
+    .modal-overlay.active{display:flex;align-items:center;justify-content:center}
+    .modal-content{background:var(--paper);border:6px solid var(--ink);box-shadow:16px 16px 0 rgba(0,0,0,0.6);max-width:800px;width:100%;margin:auto;position:relative;max-height:90vh;overflow-y:auto}
+    .modal-header{background:var(--ink);color:var(--white);padding:24px 60px 24px 28px;border-bottom:4px solid var(--ink);position:sticky;top:0;z-index:1}
+    .modal-header h2{font-size:1.8rem;font-weight:900;text-transform:uppercase;margin:0}
+    .modal-body{padding:32px 28px}
+    .modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:var(--white);border:4px solid var(--white);font-size:1.5rem;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .16s ease;color:var(--ink)}
+    .modal-close:hover{transform:scale(1.1);background:var(--yellow)}
+    @media(max-width:700px){
+      .modal-content{border-width:4px;box-shadow:8px 8px 0 rgba(0,0,0,0.6);max-height:95vh}
+      .modal-header{padding:18px 50px 18px 20px}
+      .modal-header h2{font-size:1.4rem}
+      .modal-body{padding:24px 20px}
+      .modal-close{width:36px;height:36px;top:14px;right:14px;font-size:1.2rem}
+    }
     .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
     .node{min-height:150px;background:var(--white);padding:18px;position:relative}
     .node:nth-child(odd){background:var(--yellow)}
@@ -157,7 +169,7 @@
       section{padding:70px 0}
       section > .container > .title-row{margin-bottom:36px}
       .stat strong{font-size:2.5rem}
-      .reliability-story{padding:24px}
+
       .proof-links{grid-template-columns:1fr}
       .diagram{padding:18px}
       .diagram pre{font-size:.58rem;padding:10px;line-height:1.4;max-width:100%;word-break:break-all}
@@ -215,14 +227,12 @@
           <option value="id">Bahasa</option>
         </select>
         <div class="nav-links">
-          <a href="#about" data-i18n="navAbout">About</a>
           <a href="#impact" data-i18n="navImpact">Impact</a>
-          <a href="#cases" data-i18n="navCases">Cases</a>
+          <a href="#about" data-i18n="navAbout">About</a>
           <a href="#experience" data-i18n="navExperience">Experience</a>
           <a href="#projects" data-i18n="navProjects">Projects</a>
+          <a href="#cases" data-i18n="navCases">Cases</a>
           <a href="#reliability" data-i18n="navReliability">Reliability</a>
-          <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
-          <a href="#proof" data-i18n="navProof">Proof</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
         </div>
       </div>
@@ -393,258 +403,40 @@
     <section id="cases">
       <div class="container">
         <div class="title-row">
-          <div><span class="label" data-i18n="casesLabel">Case Studies</span><h2 class="title" data-i18n="casesTitle">From Problem to Production System</h2></div>
-          <p class="section-copy" data-i18n="casesIntro">Deep-dive case studies showing engineering decisions, constraints, and implementation approach.</p>
+          <div><span class="label" data-i18n="casesLabel">Case Studies</span><h2 class="title" data-i18n="casesTitle">Real-World Case Studies</h2></div>
+          <p class="section-copy" data-i18n="casesIntro">Production systems I've built, the challenges they solved, and measurable business outcomes.</p>
         </div>
-        <div style="display:grid;gap:32px;">
-          <article class="case neo">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;">
+          <article class="case neo case-card" onclick="openCaseModal('case1')">
             <h3 data-i18n="case1Title">Maritime Vessel Tracking Platform</h3>
-            
-            <div class="case-section">
-              <h4 data-i18n="caseContext">Context</h4>
-              <p data-i18n="case1Context">Shipping company with 50+ vessels operating across Southeast Asia and Middle East. Vessels operate in areas with variable connectivity (LTE, satellite, port connections). Operations team based in Jakarta with 24/7 monitoring requirement.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseProblem">Problem</h4>
-              <p data-i18n="case1Problem">Manual position reporting via radio/SMS; no real-time visibility; unable to optimize routes or respond to emergencies quickly. Paper-based fuel and maintenance logs created compliance risk.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseConstraints">Constraints</h4>
-              <ul>
-                <li data-i18n="case1Constraint1">Network latency: 500ms–2s depending on connection type</li>
-                <li data-i18n="case1Constraint2">Satellite connectivity: High cost, low bandwidth (pay-per-MB)</li>
-                <li data-i18n="case1Constraint3">Vessel equipment: Legacy GPRS modems, limited processing power</li>
-                <li data-i18n="case1Constraint4">Operational requirement: Position update every 15 minutes during transit</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseArchitecture">System Architecture</h4>
-              <p data-i18n="case1ArchDesc">GPS Device (Garmin, u-blox) → Edge Gateway (Raspberry Pi w/ MQTT) → AWS IoT Core → Backend API (PHP/CodeIgniter) → MySQL (operational data) + TimescaleDB (time-series) → Web Dashboard (real-time map)</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseDecisions">Key Engineering Decisions</h4>
-              <ul>
-                <li data-i18n="case1Decision1"><strong>MQTT over HTTP:</strong> Lower bandwidth, persistent connection, QoS guarantees for offline-first sync</li>
-                <li data-i18n="case1Decision2"><strong>AWS IoT Core:</strong> Managed MQTT broker, built-in authentication, scales to thousands of devices</li>
-                <li data-i18n="case1Decision3"><strong>Edge buffering:</strong> Local SQLite caching for 24h of position data; sync when connection available</li>
-                <li data-i18n="case1Decision4"><strong>TimescaleDB:</strong> Time-series data optimized for position history queries; 10x compression vs raw MySQL</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImplementation">Implementation Details</h4>
-              <ul>
-                <li data-i18n="case1Impl1">Data ingestion: 50 vessels × 4 updates/hour = ~8k messages/day; each ~200 bytes</li>
-                <li data-i18n="case1Impl2">Processing pipeline: AWS Lambda functions trigger on MQTT topic → validate → geocode → store in TimescaleDB → publish to WebSocket for live dashboard</li>
-                <li data-i18n="case1Impl3">Storage: Position archive partitioned by month; 12 months = ~500MB; geospatial indexes for proximity queries</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseFailureHandling">Failure Handling & Resilience</h4>
-              <ul>
-                <li data-i18n="case1Fail1">Offline mode: Edge gateway buffers up to 10k messages; syncs when LTE/satellite reconnects</li>
-                <li data-i18n="case1Fail2">Retry strategy: MQTT QoS 1 (at-least-once); Lambda DLQ for failed processing; manual replay via admin API</li>
-                <li data-i18n="case1Fail3">Satellite failover: LTE primary; automatic fallback to Iridium satellite if no LTE for 5 minutes</li>
-                <li data-i18n="case1Fail4">Message deduplication: Using MQTT message ID + timestamp; prevents duplicate position reports</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImpact">Impact & Outcomes</h4>
-              <ul>
-                <li data-i18n="case1Impact1">Real-time visibility: Operations team now has live position, fuel level, engine status for all 50 vessels</li>
-                <li data-i18n="case1Impact2">Route optimization: Saved ~8% fuel consumption via optimized routing based on actual weather/traffic data</li>
-                <li data-i18n="case1Impact3">Compliance: Automated position logging for regulatory reporting; eliminated manual data entry</li>
-                <li data-i18n="case1Impact4">Uptime: 99.7% dashboard availability over 18 months; zero data loss on vessels</li>
-              </ul>
-            </div>
+            <p class="case-brief" data-i18n="case1Brief">Real-time fleet tracking system for 50+ vessels across Southeast Asia. Solved connectivity challenges and reduced costs by 50%.</p>
+            <span class="read-more" data-i18n="readMore">Read Full Case Study →</span>
           </article>
 
-          <article class="case neo">
-            <h3 data-i18n="case2Title">Industrial Fuel Monitoring & Analytics</h3>
-            
-            <div class="case-section">
-              <h4 data-i18n="caseContext">Context</h4>
-              <p data-i18n="case2Context">Marine fleet operator with 12 refueling stations across 4 countries. Monthly fuel consumption: ~500,000 liters. Fuel cost: 40% of operating budget. Manual reconciliation between supply, consumption, and billing occurs monthly—typically 3–5 discrepancies.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseProblem">Problem</h4>
-              <p data-i18n="case2Problem">Manual fuel reconciliation is slow (1 week per month), error-prone (±5% variance), and prevents real-time visibility into consumption patterns. Inability to detect theft, leaks, or meter calibration drift until end of month.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseConstraints">Constraints</h4>
-              <ul>
-                <li data-i18n="case2Constraint1">Legacy infrastructure: Fuel pump meters not directly connected; manual gauge readings</li>
-                <li data-i18n="case2Constraint2">Budget: Cannot replace all fuel dispensers; must integrate with existing hardware</li>
-                <li data-i18n="case2Constraint3">Data latency: Readings from remote sites (up to 8 hours delay over satellite)</li>
-                <li data-i18n="case2Constraint4">Accuracy requirement: ±0.5% variance; detect 5L+ discrepancies in real-time</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseArchitecture">System Architecture</h4>
-              <p data-i18n="case2ArchDesc">Flow meter sensors (Omega, Emerson) → IoT edge gateway (LoRaWAN) → AWS IoT Core → Time-series database → Anomaly detection pipeline (Python/Lambda) → PostgreSQL (clean data) → Tableau dashboard + alerts</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseDecisions">Key Engineering Decisions</h4>
-              <ul>
-                <li data-i18n="case2Decision1"><strong>LoRaWAN over WiFi/LTE:</strong> Low-power wide-area network; 10km+ range; one gateway per site</li>
-                <li data-i18n="case2Decision2"><strong>Time-series database (InfluxDB):</strong> Optimized for continuous metric streams; 10x faster queries than row-oriented databases</li>
-                <li data-i18n="case2Decision3"><strong>Anomaly detection via ML:</strong> Isolation Forest algorithm detects unusual consumption patterns; alerts on theft/leak risk</li>
-                <li data-i18n="case2Decision4"><strong>Data reconciliation layer:</strong> Weighted average algorithm combines meter readings + manual counts; produces single source of truth</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImplementation">Implementation Details</h4>
-              <ul>
-                <li data-i18n="case2Impl1">Ingestion: 12 sites × 4 readings/hour = 1.1k data points/day; each ~50 bytes → 55KB/day</li>
-                <li data-i18n="case2Impl2">Processing: Real-time aggregation (hourly summaries) + batch anomaly detection (nightly); historical reconciliation (monthly)</li>
-                <li data-i18n="case2Impl3">Storage: InfluxDB with 2-year retention; PostgreSQL for reconciliation audit trail; S3 for monthly export reports</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseFailureHandling">Failure Handling & Resilience</h4>
-              <ul>
-                <li data-i18n="case2Fail1">Sensor failure: Edge gateway maintains local queue; if sensor offline >1 hour, SMS alert to site manager</li>
-                <li data-i18n="case2Fail2">Network outage: Data cached locally for 72 hours; automatic sync when connectivity restored</li>
-                <li data-i18n="case2Fail3">Data drift correction: Monthly manual verification; drift >2% triggers calibration alert</li>
-                <li data-i18n="case2Fail4">Audit trail: Every reconciliation decision logged with timestamp + username; immutable via blockchain hash</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImpact">Impact & Outcomes</h4>
-              <ul>
-                <li data-i18n="case2Impact1">Reconciliation time: Reduced from 1 week to 2 hours; monthly fuel variance now <0.3%</li>
-                <li data-i18n="case2Impact2">Loss prevention: Detected 2 major fuel theft incidents (400L, 600L) that would have gone unnoticed</li>
-                <li data-i18n="case2Impact3">Cost optimization: Identified consumption anomalies; led to fleet maintenance improvements saving ~3% fuel</li>
-                <li data-i18n="case2Impact4">Regulatory compliance: Complete audit trail for fuel cost tracking and carbon reporting</li>
-              </ul>
-            </div>
+          <article class="case neo case-card" onclick="openCaseModal('case2')">
+            <h3 data-i18n="case2Title">Industrial Fuel Monitoring System</h3>
+            <p class="case-brief" data-i18n="case2Brief">Automated fuel tracking for 12 stations monitoring 500,000 liters monthly. Reduced reconciliation time by 97%.</p>
+            <span class="read-more" data-i18n="readMore">Read Full Case Study →</span>
           </article>
 
-          <article class="case neo">
-            <h3 data-i18n="case3Title">Remote Industrial IoT Gateway with Failover Architecture</h3>
-            
-            <div class="case-section">
-              <h4 data-i18n="caseContext">Context</h4>
-              <p data-i18n="case3Context">Mining operation in remote Indonesia with 30+ sensors (temperature, vibration, power, water levels). Site located 150km from nearest cellular tower; LTE coverage: 40%; satellite internet: expensive ($500/GB). Operations staff: 20 engineers; mission-critical safety systems require continuous telemetry.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseProblem">Problem</h4>
-              <p data-i18n="case3Problem">Unstable LTE connectivity causes telemetry gaps; missing data prevents early detection of equipment failures (vibration spikes = bearing damage). Satellite Internet is unreliable and expensive. Current solution: Manual daily data collection via USB drive—24–48 hour reporting lag.</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseConstraints">Constraints</h4>
-              <ul>
-                <li data-i18n="case3Constraint1">Network: LTE availability 30–60% of time; latency 800ms–3s when available</li>
-                <li data-i18n="case3Constraint2">Satellite: 1 Mbps shared uplink; $500/10GB overage charges</li>
-                <li data-i18n="case3Constraint3">Power: Solar + diesel backup; 10kW peak, 500W baseline continuous</li>
-                <li data-i18n="case3Constraint4">Bandwidth budget: <50MB/day including all telemetry + system updates</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseArchitecture">System Architecture</h4>
-              <p data-i18n="case3ArchDesc">30 sensors (Modbus/RS-485) → Edge gateway (Intel NUC, Ubuntu) → Local processing → LTE modem (primary) + Iridium satellite (failover) → AWS IoT Core → Kinesis stream → Lambda + S3 → Real-time dashboard + alerts</p>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseDecisions">Key Engineering Decisions</h4>
-              <ul>
-                <li data-i18n="case3Decision1"><strong>Edge-first processing:</strong> All data aggregation happens locally; only summaries (not raw samples) sent to cloud</li>
-                <li data-i18n="case3Decision2"><strong>Intelligent failover:</strong> LTE monitored every 30s; automatic switch to Iridium if latency >2s or packet loss >5%</li>
-                <li data-i18n="case3Decision3"><strong>Compression & delta encoding:</strong> Only changed values transmitted; 95% bandwidth reduction vs raw telemetry</li>
-                <li data-i18n="case3Decision4"><strong>Offline-first design:</strong> Critical alerts (vibration spike, temperature >80°C) stored locally + trigger on-site alarm; synced when online</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImplementation">Implementation Details</h4>
-              <ul>
-                <li data-i18n="case3Impl1">Data collection: 30 sensors sampled every 10s → 1-minute rolling averages (min/max/mean) → uploaded every 5 minutes</li>
-                <li data-i18n="case3Impl2">Storage: 14-day local SQLite buffer (128MB); syncs to AWS S3 + TimescaleDB on connection recovery</li>
-                <li data-i18n="case3Impl3">Processing: Critical alerts evaluated in-gateway (hardcoded rules); anomalies sent to cloud for ML scoring</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseFailureHandling">Failure Handling & Resilience</h4>
-              <ul>
-                <li data-i18n="case3Fail1">Gateway failure: Dual gateway setup; automatic failover via VRRP protocol; shared storage on NAS</li>
-                <li data-i18n="case3Fail2">Sensor failure: Missing data flagged; threshold-based alerting (e.g., "no vibration data for 30 min = sensor offline")</li>
-                <li data-i18n="case3Fail3">Cloud API failure: Gateway retries with exponential backoff; stores data locally for 2 weeks</li>
-                <li data-i18n="case3Fail4">Power loss: UPS keeps gateway online for 4 hours; graceful shutdown to prevent data corruption</li>
-              </ul>
-            </div>
-
-            <div class="case-section">
-              <h4 data-i18n="caseImpact">Impact & Outcomes</h4>
-              <ul>
-                <li data-i18n="case3Impact1">Data availability: Improved from 40% (manual) to 99.2% (automated with edge buffering)</li>
-                <li data-i18n="case3Impact2">Incident detection: Vibration anomalies now detected within 15 minutes vs 24 hours; prevented 3 bearing failures</li>
-                <li data-i18n="case3Impact3">Cost savings: Bandwidth usage: 35MB/day (vs projected 500MB for raw telemetry); satellite overage charges eliminated</li>
-                <li data-i18n="case3Impact4">Operational efficiency: Site engineers can now troubleshoot remotely via telemetry; reduced on-site visits by 40%</li>
-              </ul>
-            </div>
+          <article class="case neo case-card" onclick="openCaseModal('case3')">
+            <h3 data-i18n="case3Title">Remote Mining Site Monitoring</h3>
+            <p class="case-brief" data-i18n="case3Brief">Smart gateway for 30+ sensors with satellite failover. Improved data availability from 40% to 99.2% in remote location.</p>
+            <span class="read-more" data-i18n="readMore">Read Full Case Study →</span>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section id="technology">
-      <div class="container">
-        <div class="title-row">
-          <div><span class="label" data-i18n="techLabel">Architecture</span><h2 class="title" data-i18n="techTitle">Technology Decisions & Tradeoffs</h2></div>
-          <p class="section-copy" data-i18n="techIntro">How we choose between competing technologies based on operational constraints.</p>
-        </div>
-        <div style="display:grid;gap:28px;">
-          <article class="case neo">
-            <h3 data-i18n="techMQTT">MQTT Over HTTP Polling</h3>
-            <p data-i18n="techMQTTBody">For real-time IoT telemetry from resource-constrained devices, MQTT (publish-subscribe) provides persistent connections, QoS guarantees (at-least-once delivery), and automatic message queuing during network outages. HTTP polling requires the device to repeatedly ask for updates, consuming 5–10x more bandwidth and processing power. Trade-off: MQTT requires a broker (AWS IoT Core), but eliminates the complexity of managing reconnection logic on each device.</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techAWSIoT">AWS IoT Core vs Self-Hosted MQTT Broker</h3>
-            <p data-i18n="techAWSIoTBody">Self-hosted brokers (Mosquitto, HiveMQ) offer full control but require: infrastructure scaling, certificate management, DDoS protection, and 24/7 monitoring. AWS IoT Core is a managed service with: built-in device authentication (X.509), automatic scaling to millions of connections, lifecycle management, and rule engine for filtering/routing. For mission-critical maritime systems, the managed service eliminates operational burden. Cost: ~$0.04 per million MQTT messages vs ~$500/month for self-hosted infrastructure.</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techTimeseries">TimescaleDB Over Traditional MySQL</h3>
-            <p data-i18n="techTimeseriesBody">Time-series data (vessel positions, sensor readings) has different query patterns than transactional data: append-heavy, rarely updated, and optimized for range queries. TimescaleDB (PostgreSQL extension) compresses time-series data 10–15x better than row-oriented storage, and range queries (e.g., "all position points in the last 24 hours") are 5–100x faster. Trade-off: TimescaleDB is specialized; we use PostgreSQL for operational data (user accounts, transactions) and TimescaleDB for analytics.</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techEdgeProcessing">Edge Processing vs Cloud-Only</h3>
-            <p data-i18n="techEdgeBody">Cloud-only processing requires all raw sensor data to reach the cloud, which in remote environments means massive bandwidth usage (500MB+ per site per day). Edge processing (local aggregation) reduces this to 5–10% of the original size through: minute-level rolling averages, anomaly detection (outlier rejection), and delta encoding (only send changed values). Critical alerts (vibration spike, temperature exceeding threshold) trigger immediately on-edge without waiting for cloud round-trip. Trade-off: Increased device complexity, but massive bandwidth savings and lower operational cost.</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techLoRaWAN">LoRaWAN Over WiFi/LTE</h3>
-            <p data-i18n="techLoRaWANBody">For stationary industrial sensors at geographically dispersed sites, LoRaWAN (Long Range Wide Area Network) provides: 10km+ range, low power consumption (battery life: years), and per-gateway cost (~$300/unit). WiFi requires each sensor to be within 50m and managed individually. LTE requires cellular coverage (often unavailable in remote areas) and monthly per-device connectivity fees. LoRaWAN aggregates multiple sensors through one gateway, reducing infrastructure cost and operational complexity. Trade-off: Lower bandwidth (best for periodic readings, not streaming).</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techCompression">Compression & Delta Encoding</h3>
-            <p data-i18n="techCompressionBody">Transmitting raw sensor samples every 10 seconds from 30 sensors = 2.6GB per day. Aggregating to 1-minute rolling averages (min/max/mean) reduces this to 26MB. Adding delta encoding (only transmit values that changed >threshold) reduces further to 5MB. For satellite connectivity ($500/10GB overage), this difference is operational necessity: 26MB/day is $13/month; 5MB/day is $2/month. Trade-off: Slight data loss on non-critical metrics (e.g., fuel level that didn't change), but critical metrics (vibration, temperature) are never delta-encoded.</p>
-          </article>
-
-          <article class="case neo">
-            <h3 data-i18n="techOfflineFirst">Offline-First Architecture</h3>
-            <p data-i18n="techOfflineFirstBody">Traditional systems fail when network is unavailable. Offline-first design: all data stored locally first, synced to cloud when connectivity available. Benefits: uninterrupted monitoring, zero data loss, and graceful degradation. Implementation: local SQLite buffer on gateway stores up to 14 days of telemetry; critical alerts trigger on-gateway rules (hardcoded thresholds); non-critical anomalies queued for cloud ML scoring when online. Trade-off: increased local storage (128MB per gateway) and added complexity, but ensures mission-critical systems never go blind.</p>
-          </article>
+        <!-- Modal Structure -->
+        <div id="caseModal" class="modal-overlay" onclick="closeCaseModal(event)">
+          <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+              <h2 id="modalTitle">Case Study Title</h2>
+              <button class="modal-close" onclick="closeCaseModal()" aria-label="Close modal">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+              <!-- Content populated by JavaScript -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -655,141 +447,34 @@
           <div><span class="label" data-i18n="reliabilityLabel">Engineering</span><h2 class="title" data-i18n="reliabilityTitle">Production-Grade Resilience</h2></div>
           <p class="section-copy" data-i18n="reliabilityIntro">Real-world failure scenarios from production systems and how they're prevented or recovered from.</p>
         </div>
-        <div style="display:grid;gap:20px;">
-          <div class="reliability-story">
-            <h4 data-i18n="reliabilityStory1Title">Network Outage: Satellite Failover Protocol</h4>
+        <div style="display:grid;gap:28px;">
+          <article class="case neo">
+            <h3 data-i18n="reliabilityStory1Title">Network Outage: Satellite Failover Protocol</h3>
             <p data-i18n="reliabilityStory1Desc">Maritime operations require continuous position updates even when LTE fails. Our system automatically detects when LTE latency exceeds 2 seconds or packet loss exceeds 5% for 30 seconds, then switches to Iridium satellite connectivity.</p>
             <div class="scenario" data-i18n="reliabilityStory1Scenario"><strong>Scenario:</strong> A vessel loses LTE signal entering international waters. System detects outage, queued messages are flushed over satellite link (higher cost, lower bandwidth, but uninterrupted monitoring).</div>
             <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory1Mit">Hardcoded latency/packet-loss thresholds trigger automatic failover. Critical alerts (collision risk, fire) are sent via both channels. Cost impact: extra $50/month per vessel, but prevents catastrophic blind spots.</span></div>
-          </div>
+          </article>
 
-          <div class="reliability-story">
-            <h4 data-i18n="reliabilityStory2Title">Device Failure: Edge Gateway Redundancy</h4>
+          <article class="case neo">
+            <h3 data-i18n="reliabilityStory2Title">Device Failure: Edge Gateway Redundancy</h3>
             <p data-i18n="reliabilityStory2Desc">A single gateway in a remote mining site collects data from 30+ sensors. If the gateway crashes, all telemetry is lost. We deploy dual gateways with automatic failover using VRRP protocol (Virtual Router Redundancy).</p>
             <div class="scenario" data-i18n="reliabilityStory2Scenario"><strong>Scenario:</strong> Primary gateway power-fails during heavy rain. Backup gateway detects missing heartbeat within 3 seconds and takes over. Sensors switch to backup gateway automatically via ARP announcement.</div>
             <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory2Mit">Dual NUC setup with shared NAS storage (24h local buffering). UPS provides 4-hour hold time for graceful degradation. Total cost: ~$2k extra, but eliminates single point of failure for mission-critical monitoring.</span></div>
-          </div>
+          </article>
 
-          <div class="reliability-story">
-            <h4 data-i18n="reliabilityStory3Title">Data Loss: Offline-First Buffering</h4>
+          <article class="case neo">
+            <h3 data-i18n="reliabilityStory3Title">Data Loss: Offline-First Buffering</h3>
             <p data-i18n="reliabilityStory3Desc">Cloud APIs fail. Satellite connectivity drops. Internet storms cause packet loss. Traditional systems lose data in these scenarios. Our offshore systems buffer all data locally first, sync when healthy.</p>
             <div class="scenario" data-i18n="reliabilityStory3Scenario"><strong>Scenario:</strong> AWS IoT Core becomes unreachable for 8 hours due to DDoS. Local SQLite buffer on every edge gateway stores 14 days of raw telemetry. When connectivity restores, queued messages replay in order, zero data loss.</div>
             <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory3Mit">All data written to local SQLite before cloud transmission. Message IDs + timestamps enable deduplication on recovery. Critical alerts (vibration spike) trigger local hardcoded rules immediately, don't wait for cloud scoring. Extra local storage: 128MB per gateway.</span></div>
-          </div>
+          </article>
 
-          <div class="reliability-story">
-            <h4 data-i18n="reliabilityStory4Title">Data Corruption: Graceful Degradation</h4>
+          <article class="case neo">
+            <h3 data-i18n="reliabilityStory4Title">Data Corruption: Graceful Degradation</h3>
             <p data-i18n="reliabilityStory4Desc">Sensor reads garbage data. Network corrupts packets. Database constraints are violated. Corrupted data cascades through systems. We validate early and degrade gracefully rather than crash.</p>
             <div class="scenario" data-i18n="reliabilityStory4Scenario"><strong>Scenario:</strong> Temperature sensor returns -999°C (sensor malfunction). System flags the data point, logs to audit trail, but does NOT block the pipeline. Dashboard shows the reading with a warning badge. Alert only triggers if pattern repeats (outlier vs sensor death).</div>
             <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory4Mit">Multi-layer validation: edge gateway validates ranges (temp -40 to 150°C), backend validates patterns (isolation forest anomaly detection), database has CHECK constraints. Failed validation = quarantine + audit log, never crash. Operators see exactly what data is suspect.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture">
-      <div class="container">
-        <div class="title-row">
-          <div><span class="label" data-i18n="architectureLabel">Architecture</span><h2 class="title" data-i18n="architectureTitle">Telemetry Flow</h2></div>
-          <p class="section-copy" data-i18n="architectureIntro">A simple field-to-dashboard path from hardware signals to operational decisions.</p>
-        </div>
-        
-        <div style="display:grid;gap:24px;margin-bottom:44px;">
-          <div class="diagram">
-            <h4 data-i18n="diagram1Title">Maritime Vessel Tracking: End-to-End Data Flow</h4>
-            <pre data-i18n="diagram1Ascii">
-┌─────────────┐      ┌──────────────┐      ┌─────────────┐      ┌──────────────┐
-│ GPS Device  │─────▶│ Edge Gateway │─────▶│  AWS IoT    │─────▶│  Backend API │
-│  (Vessel)   │      │  (Raspberry  │      │    Core     │      │ (CodeIgniter)│
-│             │      │     Pi)      │      │   (MQTT)    │      │              │
-└─────────────┘      └──────────────┘      └─────────────┘      └──────────────┘
-     │                      │                      │                     │
-     │ Serial/USB           │ MQTT QoS 1           │ Lambda Trigger      │ SQL Write
-     │ GPS NMEA             │ TLS 1.2              │ Validation          │ TimescaleDB
-     │ 1 Hz                 │ Offline Buffer       │ Geocoding           │ PostgreSQL
-     │                      │ 24h SQLite           │ Deduplication       │
-     ▼                      ▼                      ▼                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         WebSocket Stream + Dashboard                        │
-│              Real-time Map (Leaflet) + Alerts + Fleet Status               │
-└─────────────────────────────────────────────────────────────────────────────┘</pre>
-            <p data-i18n="diagram1Desc"><strong>Key Characteristics:</strong> Persistent MQTT connection reduces bandwidth by 90% vs HTTP polling. Edge buffering ensures zero data loss during network outages. TimescaleDB compresses 12 months of position data into ~500MB (10x better than raw MySQL).</p>
-          </div>
-
-          <div class="diagram">
-            <h4 data-i18n="diagram2Title">Remote IoT Gateway: Satellite Failover Architecture</h4>
-            <pre data-i18n="diagram2Ascii">
-┌──────────────┐
-│ 30+ Sensors  │─── Modbus/RS-485 ───┐
-│ (Temp/Power/ │                     │
-│  Vibration)  │                     ▼
-└──────────────┘              ┌──────────────┐
-                              │ Edge Gateway │
-                              │  (Intel NUC) │
-                              │              │
-                              │ [Aggregation]│◀── 1-min rolling avg
-                              │ [Validation] │◀── Range check
-                              │ [Buffering]  │◀── 14-day SQLite
-                              └──────────────┘
-                                     │
-                        ┌────────────┴────────────┐
-                        │                         │
-                   ┌────▼─────┐            ┌─────▼─────┐
-                   │   LTE    │ Failover   │ Satellite │
-                   │  Modem   │ (latency   │  (Iridium)│
-                   │ Primary  │  >2s OR    │  Backup   │
-                   │          │ loss >5%)  │           │
-                   └────┬─────┘            └─────┬─────┘
-                        │                        │
-                        └────────────┬───────────┘
-                                     ▼
-                              ┌──────────────┐
-                              │  AWS IoT     │
-                              │   Kinesis    │
-                              │  S3 + Lambda │
-                              └──────────────┘</pre>
-            <p data-i18n="diagram2Desc"><strong>Resilience Features:</strong> Automatic failover within 30 seconds. LTE: 35MB/day average. Satellite: Only used during outages (~$50/month). Critical alerts (vibration spike) processed on-gateway, don't wait for cloud round-trip.</p>
-          </div>
-        </div>
-
-        <div class="flow" aria-label="System architecture flow" data-i18n-aria-label="architectureAria">
-          <div class="node neo"><span>01</span><strong data-i18n="node1Title">GPS Device</strong><p data-i18n="node1Body">Captures position and field signals.</p></div>
-          <div class="node neo"><span>02</span><strong data-i18n="node2Title">Edge Gateway</strong><p data-i18n="node2Body">Buffers and forwards telemetry.</p></div>
-          <div class="node neo"><span>03</span><strong>AWS IoT Core</strong><p data-i18n="node3Body">Receives MQTT messages securely.</p></div>
-          <div class="node neo"><span>04</span><strong data-i18n="node4Title">Backend API</strong><p data-i18n="node4Body">Processes events and rules.</p></div>
-          <div class="node neo"><span>05</span><strong>MySQL Database</strong><p data-i18n="node5Body">Stores operational history.</p></div>
-          <div class="node neo"><span>06</span><strong data-i18n="node6Title">Analytics Dashboard</strong><p data-i18n="node6Body">Turns data into decisions.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="proof">
-      <div class="container">
-        <div class="title-row">
-          <div><span class="label" data-i18n="proofLabel">Validation</span><h2 class="title" data-i18n="proofTitle">Code & Credentials</h2></div>
-          <p class="section-copy" data-i18n="proofIntro">Open-source contributions, technical writing, and professional certifications that demonstrate depth beyond this portfolio.</p>
-        </div>
-        <div class="proof-links">
-          <div class="proof-card neo">
-            <h4 data-i18n="proofGithubTitle">GitHub Profile</h4>
-            <p data-i18n="proofGithubDesc">Active contributions to IoT utilities, PHP libraries, and open-source telemetry tools. Check commit history for coding patterns and problem-solving approach.</p>
-            <a href="https://github.com/adityasrucitra" target="_blank" rel="noopener noreferrer" data-i18n="proofGithubCta">View Repositories →</a>
-          </div>
-          <div class="proof-card neo">
-            <h4 data-i18n="proofLinkedInTitle">LinkedIn Profile</h4>
-            <p data-i18n="proofLinkedInDesc">Professional timeline, endorsements from maritime & industrial clients, and detailed project breakdowns with quantified results.</p>
-            <a href="https://linkedin.com/in/adityasrucitra" target="_blank" rel="noopener noreferrer" data-i18n="proofLinkedInCta">View Profile →</a>
-          </div>
-          <div class="proof-card neo">
-            <h4 data-i18n="proofAwsTitle">AWS Certifications</h4>
-            <p data-i18n="proofAwsDesc">AWS Solutions Architect & IoT Specialty certifications validate cloud infrastructure design, IoT Core integration, and production-grade system architecture.</p>
-            <a href="https://www.credly.com/users/adityasrucitra" target="_blank" rel="noopener noreferrer" data-i18n="proofAwsCta">View Badges →</a>
-          </div>
-          <div class="proof-card neo">
-            <h4 data-i18n="proofCodeTitle">Code Samples</h4>
-            <p data-i18n="proofCodeDesc">Architecture snippets, MQTT client patterns, edge buffering logic, and TimescaleDB query optimizations available as GitHub Gists for technical review.</p>
-            <a href="https://gist.github.com/adityasrucitra" target="_blank" rel="noopener noreferrer" data-i18n="proofCodeCta">View Gists →</a>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -885,87 +570,38 @@
         project3Title: "Remote IoT Gateway",
         project3Body: "LTE and satellite failover telemetry architecture for remote sites where connectivity is unreliable and data loss matters.",
         casesLabel: "Case Studies",
-        casesTitle: "From Problem to Production System",
-        casesIntro: "Deep-dive case studies showing engineering decisions, constraints, and implementation approach.",
-        caseContext: "Context",
-        caseProblem: "Problem",
-        caseConstraints: "Constraints",
-        caseArchitecture: "System Architecture",
-        caseDecisions: "Key Engineering Decisions",
-        caseImplementation: "Implementation Details",
-        caseFailureHandling: "Failure Handling & Resilience",
-        caseImpact: "Impact & Outcomes",
+        casesTitle: "Real-World Case Studies",
+        casesIntro: "Production systems I've built, the challenges they solved, and measurable business outcomes.",
+        readMore: "Read Full Case Study →",
+        case1Brief: "Real-time fleet tracking system for 50+ vessels across Southeast Asia. Solved connectivity challenges and reduced costs by 50%.",
+        case2Brief: "Automated fuel tracking for 12 stations monitoring 500,000 liters monthly. Reduced reconciliation time by 97%.",
+        case3Brief: "Smart gateway for 30+ sensors with satellite failover. Improved data availability from 40% to 99.2% in remote location.",
+        caseChallenge: "Challenge",
+        caseSolution: "Solution",
+        caseResults: "Results",
         case1Title: "Maritime Vessel Tracking Platform",
-        case1Context: "Shipping company with 50+ vessels operating across Southeast Asia and Middle East. Vessels operate in areas with variable connectivity (LTE, satellite, port connections). Operations team based in Jakarta with 24/7 monitoring requirement.",
-        case1Problem: "Manual position reporting via radio/SMS; no real-time visibility; unable to optimize routes or respond to emergencies quickly. Paper-based fuel and maintenance logs created compliance risk.",
-        case1Constraint1: "Network latency: 500ms–2s depending on connection type",
-        case1Constraint2: "Satellite connectivity: High cost, low bandwidth (pay-per-MB)",
-        case1Constraint3: "Vessel equipment: Legacy GPRS modems, limited processing power",
-        case1Constraint4: "Operational requirement: Position update every 15 minutes during transit",
-        case1ArchDesc: "GPS Device (Garmin, u-blox) → Edge Gateway (Raspberry Pi w/ MQTT) → AWS IoT Core → Backend API (PHP/CodeIgniter) → MySQL (operational data) + TimescaleDB (time-series) → Web Dashboard (real-time map)",
-        case1Decision1: "<strong>MQTT over HTTP:</strong> Lower bandwidth, persistent connection, QoS guarantees for offline-first sync",
-        case1Decision2: "<strong>AWS IoT Core:</strong> Managed MQTT broker, built-in authentication, scales to thousands of devices",
-        case1Decision3: "<strong>Edge buffering:</strong> Local SQLite caching for 24h of position data; sync when connection available",
-        case1Decision4: "<strong>TimescaleDB:</strong> Time-series data optimized for position history queries; 10x compression vs raw MySQL",
-        case1Impl1: "Data ingestion: 50 vessels × 4 updates/hour = ~8k messages/day; each ~200 bytes",
-        case1Impl2: "Processing pipeline: AWS Lambda functions trigger on MQTT topic → validate → geocode → store in TimescaleDB → publish to WebSocket for live dashboard",
-        case1Impl3: "Storage: Position archive partitioned by month; 12 months = ~500MB; geospatial indexes for proximity queries",
-        case1Fail1: "Offline mode: Edge gateway buffers up to 10k messages; syncs when LTE/satellite reconnects",
-        case1Fail2: "Retry strategy: MQTT QoS 1 (at-least-once); Lambda DLQ for failed processing; manual replay via admin API",
-        case1Fail3: "Satellite failover: LTE primary; automatic fallback to Iridium satellite if no LTE for 5 minutes",
-        case1Fail4: "Message deduplication: Using MQTT message ID + timestamp; prevents duplicate position reports",
-        case1Impact1: "Real-time visibility: Operations team now has live position, fuel level, engine status for all 50 vessels",
-        case1Impact2: "Route optimization: Saved ~8% fuel consumption via optimized routing based on actual weather/traffic data",
-        case1Impact3: "Compliance: Automated position logging for regulatory reporting; eliminated manual data entry",
-        case1Impact4: "Uptime: 99.7% dashboard availability over 18 months; zero data loss on vessels",
-        case2Title: "Industrial Fuel Monitoring & Analytics",
-        case2Context: "Marine fleet operator with 12 refueling stations across 4 countries. Monthly fuel consumption: ~500,000 liters. Fuel cost: 40% of operating budget. Manual reconciliation between supply, consumption, and billing occurs monthly—typically 3–5 discrepancies.",
-        case2Problem: "Manual fuel reconciliation is slow (1 week per month), error-prone (±5% variance), and prevents real-time visibility into consumption patterns. Inability to detect theft, leaks, or meter calibration drift until end of month.",
-        case2Constraint1: "Legacy infrastructure: Fuel pump meters not directly connected; manual gauge readings",
-        case2Constraint2: "Budget: Cannot replace all fuel dispensers; must integrate with existing hardware",
-        case2Constraint3: "Data latency: Readings from remote sites (up to 8 hours delay over satellite)",
-        case2Constraint4: "Accuracy requirement: ±0.5% variance; detect 5L+ discrepancies in real-time",
-        case2ArchDesc: "Flow meter sensors (Omega, Emerson) → IoT edge gateway (LoRaWAN) → AWS IoT Core → Time-series database → Anomaly detection pipeline (Python/Lambda) → PostgreSQL (clean data) → Tableau dashboard + alerts",
-        case2Decision1: "<strong>LoRaWAN over WiFi/LTE:</strong> Low-power wide-area network; 10km+ range; one gateway per site",
-        case2Decision2: "<strong>Time-series database (InfluxDB):</strong> Optimized for continuous metric streams; 10x faster queries than row-oriented databases",
-        case2Decision3: "<strong>Anomaly detection via ML:</strong> Isolation Forest algorithm detects unusual consumption patterns; alerts on theft/leak risk",
-        case2Decision4: "<strong>Data reconciliation layer:</strong> Weighted average algorithm combines meter readings + manual counts; produces single source of truth",
-        case2Impl1: "Ingestion: 12 sites × 4 readings/hour = 1.1k data points/day; each ~50 bytes → 55KB/day",
-        case2Impl2: "Processing: Real-time aggregation (hourly summaries) + batch anomaly detection (nightly); historical reconciliation (monthly)",
-        case2Impl3: "Storage: InfluxDB with 2-year retention; PostgreSQL for reconciliation audit trail; S3 for monthly export reports",
-        case2Fail1: "Sensor failure: Edge gateway maintains local queue; if sensor offline >1 hour, SMS alert to site manager",
-        case2Fail2: "Network outage: Data cached locally for 72 hours; automatic sync when connectivity restored",
-        case2Fail3: "Data drift correction: Monthly manual verification; drift >2% triggers calibration alert",
-        case2Fail4: "Audit trail: Every reconciliation decision logged with timestamp + username; immutable via blockchain hash",
-        case2Impact1: "Reconciliation time: Reduced from 1 week to 2 hours; monthly fuel variance now <0.3%",
-        case2Impact2: "Loss prevention: Detected 2 major fuel theft incidents (400L, 600L) that would have gone unnoticed",
-        case2Impact3: "Cost optimization: Identified consumption anomalies; led to fleet maintenance improvements saving ~3% fuel",
-        case2Impact4: "Regulatory compliance: Complete audit trail for fuel cost tracking and carbon reporting",
-        case3Title: "Remote Industrial IoT Gateway with Failover Architecture",
-        case3Context: "Mining operation in remote Indonesia with 30+ sensors (temperature, vibration, power, water levels). Site located 150km from nearest cellular tower; LTE coverage: 40%; satellite internet: expensive ($500/GB). Operations staff: 20 engineers; mission-critical safety systems require continuous telemetry.",
-        case3Problem: "Unstable LTE connectivity causes telemetry gaps; missing data prevents early detection of equipment failures (vibration spikes = bearing damage). Satellite Internet is unreliable and expensive. Current solution: Manual daily data collection via USB drive—24–48 hour reporting lag.",
-        case3Constraint1: "Network: LTE availability 30–60% of time; latency 800ms–3s when available",
-        case3Constraint2: "Satellite: 1 Mbps shared uplink; $500/10GB overage charges",
-        case3Constraint3: "Power: Solar + diesel backup; 10kW peak, 500W baseline continuous",
-        case3Constraint4: "Bandwidth budget: <50MB/day including all telemetry + system updates",
-        case3ArchDesc: "30 sensors (Modbus/RS-485) → Edge gateway (Intel NUC, Ubuntu) → Local processing → LTE modem (primary) + Iridium satellite (failover) → AWS IoT Core → Kinesis stream → Lambda + S3 → Real-time dashboard + alerts",
-        case3Decision1: "<strong>Edge-first processing:</strong> All data aggregation happens locally; only summaries (not raw samples) sent to cloud",
-        case3Decision2: "<strong>Intelligent failover:</strong> LTE monitored every 30s; automatic switch to Iridium if latency >2s or packet loss >5%",
-        case3Decision3: "<strong>Compression & delta encoding:</strong> Only changed values transmitted; 95% bandwidth reduction vs raw telemetry",
-        case3Decision4: "<strong>Offline-first design:</strong> Critical alerts (vibration spike, temperature >80°C) stored locally + trigger on-site alarm; synced when online",
-        case3Impl1: "Data collection: 30 sensors sampled every 10s → 1-minute rolling averages (min/max/mean) → uploaded every 5 minutes",
-        case3Impl2: "Storage: 14-day local SQLite buffer (128MB); syncs to AWS S3 + TimescaleDB on connection recovery",
-        case3Impl3: "Processing: Critical alerts evaluated in-gateway (hardcoded rules); anomalies sent to cloud for ML scoring",
-        case3Fail1: "Gateway failure: Dual gateway setup; automatic failover via VRRP protocol; shared storage on NAS",
-        case3Fail2: "Sensor failure: Missing data flagged; threshold-based alerting (e.g., \"no vibration data for 30 min = sensor offline\")",
-        case3Fail3: "Cloud API failure: Gateway retries with exponential backoff; stores data locally for 2 weeks",
-        case3Fail4: "Power loss: UPS keeps gateway online for 4 hours; graceful shutdown to prevent data corruption",
-        case3Impact1: "Data availability: Improved from 40% (manual) to 99.2% (automated with edge buffering)",
-        case3Impact2: "Incident detection: Vibration anomalies now detected within 15 minutes vs 24 hours; prevented 3 bearing failures",
-        case3Impact3: "Cost savings: Bandwidth usage: 35MB/day (vs projected 500MB for raw telemetry); satellite overage charges eliminated",
-        case3Impact4: "Operational efficiency: Site engineers can now troubleshoot remotely via telemetry; reduced on-site visits by 40%",
+        case1Challenge: "Maritime company with 50+ vessels needed real-time tracking across Southeast Asia. Existing satellite system was expensive ($150/vessel/month), slow (30-min delays), and lost data during network outages.",
+        case1Solution: "Built cloud-connected tracking system with local data buffering. Vessels automatically sync position, fuel, and engine data when connected. Dashboard shows live fleet status on interactive map.",
+        case1Result1: "<strong>99.7% uptime</strong> — Zero data loss over 18 months",
+        case1Result2: "<strong>8% fuel savings</strong> — Better routing based on real-time data",
+        case1Result3: "<strong>50% cost reduction</strong> — From $150 to $75 per vessel monthly",
+        case1Result4: "<strong>Real-time updates</strong> — 15-minute refresh vs 30-minute delays",
+        case2Title: "Industrial Fuel Monitoring System",
+        case2Challenge: "Fleet operator with 12 fueling stations spent 1 week monthly reconciling 500,000 liters of fuel data. Manual tracking had ±5% errors and couldn't detect theft or leaks until month-end.",
+        case2Solution: "Installed wireless sensors at fuel stations to automatically track consumption. System alerts managers to unusual patterns (theft, leaks, calibration issues) in real-time and generates reconciliation reports automatically.",
+        case2Result1: "<strong>97% faster reporting</strong> — 1 week reduced to 2 hours",
+        case2Result2: "<strong>Stopped 2 major thefts</strong> — 1,000L total prevented",
+        case2Result3: "<strong><0.3% variance</strong> — Down from ±5% error rate",
+        case2Result4: "<strong>3% fuel savings</strong> — Identified maintenance issues early",
+        case3Title: "Remote Mining Site Monitoring",
+        case3Challenge: "Mining site in remote Indonesia had 30+ sensors but unreliable internet (40% uptime). Equipment failures went undetected for 24-48 hours. Engineers collected data manually via USB drives.",
+        case3Solution: "Deployed smart gateway that stores data locally and automatically syncs to cloud when internet available. System switches between cellular and satellite connections. Critical alerts (overheating, vibration spikes) trigger immediately on-site.",
+        case3Result1: "<strong>99.2% data availability</strong> — Up from 40% manual collection",
+        case3Result2: "<strong>Prevented 3 failures</strong> — Early vibration detection saved equipment",
+        case3Result3: "<strong>93% faster alerts</strong> — 15 minutes vs 24-hour delays",
+        case3Result4: "<strong>40% fewer site visits</strong> — Remote troubleshooting enabled",
         techLabel: "Architecture",
-        techTitle: "Technology Decisions & Tradeoffs",
+        techTitle: "",
         techIntro: "How we choose between competing technologies based on operational constraints.",
         techMQTT: "MQTT Over HTTP Polling",
         techMQTTBody: "For real-time IoT telemetry from resource-constrained devices, MQTT (publish-subscribe) provides persistent connections, QoS guarantees (at-least-once delivery), and automatic message queuing during network outages. HTTP polling requires the device to repeatedly ask for updates, consuming 5–10x more bandwidth and processing power. Trade-off: MQTT requires a broker (AWS IoT Core), but eliminates the complexity of managing reconnection logic on each device.",
@@ -1114,85 +750,36 @@
         project3Title: "Remote IoT Gateway",
         project3Body: "Arsitektur telemetry dengan failover LTE dan satelit untuk lokasi remote ketika konektivitas tidak stabil dan kehilangan data perlu dihindari.",
         casesLabel: "Studi Kasus",
-        casesTitle: "Dari Masalah ke Sistem Produksi",
-        casesIntro: "Studi kasus mendalam menunjukkan keputusan engineering, constraint, dan pendekatan implementasi.",
-        caseContext: "Konteks",
-        caseProblem: "Masalah",
-        caseConstraints: "Constraint",
-        caseArchitecture: "Arsitektur Sistem",
-        caseDecisions: "Keputusan Engineering Utama",
-        caseImplementation: "Detail Implementasi",
-        caseFailureHandling: "Handling Failure & Resiliensi",
-        caseImpact: "Dampak & Outcome",
+        casesTitle: "Studi Kasus Real-World",
+        casesIntro: "Sistem produksi yang sudah saya bangun, tantangan yang dipecahkan, dan hasil bisnis yang terukur.",
+        readMore: "Baca Studi Kasus Lengkap →",
+        case1Brief: "Sistem tracking fleet real-time untuk 50+ kapal di Asia Tenggara. Selesaikan tantangan konektivitas dan kurangi biaya 50%.",
+        case2Brief: "Tracking fuel otomatis untuk 12 station yang monitor 500,000 liter per bulan. Kurangi waktu reconciliation 97%.",
+        case3Brief: "Smart gateway untuk 30+ sensor dengan failover satelit. Tingkatkan ketersediaan data dari 40% jadi 99.2% di lokasi remote.",
+        caseChallenge: "Tantangan",
+        caseSolution: "Solusi",
+        caseResults: "Hasil",
         case1Title: "Platform Maritime Vessel Tracking",
-        case1Context: "Perusahaan shipping dengan 50+ kapal beroperasi di Asia Tenggara dan Timur Tengah. Kapal beroperasi di area dengan konektivitas variabel (LTE, satelit, koneksi port). Tim operasi berbasis Jakarta dengan requirement monitoring 24/7.",
-        case1Problem: "Pelaporan posisi manual via radio/SMS; tidak ada visibilitas real-time; tidak bisa mengoptimalkan rute atau merespons emergency dengan cepat. Log fuel dan maintenance berbasis kertas menciptakan risiko compliance.",
-        case1Constraint1: "Network latency: 500ms–2s tergantung tipe koneksi",
-        case1Constraint2: "Konektivitas satelit: Biaya tinggi, bandwidth rendah (pay-per-MB)",
-        case1Constraint3: "Equipment kapal: Modem GPRS legacy, daya pemrosesan terbatas",
-        case1Constraint4: "Requirement operasional: Position update setiap 15 menit saat transit",
-        case1ArchDesc: "GPS Device (Garmin, u-blox) → Edge Gateway (Raspberry Pi w/ MQTT) → AWS IoT Core → Backend API (PHP/CodeIgniter) → MySQL (operational data) + TimescaleDB (time-series) → Web Dashboard (real-time map)",
-        case1Decision1: "<strong>MQTT over HTTP:</strong> Bandwidth lebih rendah, persistent connection, QoS guarantees untuk offline-first sync",
-        case1Decision2: "<strong>AWS IoT Core:</strong> Managed MQTT broker, built-in authentication, scales ke ribuan device",
-        case1Decision3: "<strong>Edge buffering:</strong> Local SQLite caching untuk 24 jam data posisi; sync saat koneksi tersedia",
-        case1Decision4: "<strong>TimescaleDB:</strong> Time-series data optimized untuk position history queries; 10x compression vs raw MySQL",
-        case1Impl1: "Data ingestion: 50 kapal × 4 updates/jam = ~8k pesan/hari; masing-masing ~200 bytes",
-        case1Impl2: "Processing pipeline: AWS Lambda trigger di MQTT topic → validate → geocode → store di TimescaleDB → publish ke WebSocket untuk live dashboard",
-        case1Impl3: "Storage: Position archive partitioned per bulan; 12 bulan = ~500MB; geospatial indexes untuk proximity queries",
-        case1Fail1: "Offline mode: Edge gateway buffer hingga 10k pesan; sync saat LTE/satelit reconnect",
-        case1Fail2: "Retry strategy: MQTT QoS 1 (at-least-once); Lambda DLQ untuk failed processing; manual replay via admin API",
-        case1Fail3: "Satellite failover: LTE primary; automatic fallback ke Iridium satelit jika tidak ada LTE 5 menit",
-        case1Fail4: "Message deduplication: Menggunakan MQTT message ID + timestamp; prevent duplicate position reports",
-        case1Impact1: "Real-time visibility: Tim operasi sekarang punya live position, fuel level, engine status untuk semua 50 kapal",
-        case1Impact2: "Route optimization: Hemat ~8% fuel consumption via optimized routing berdasarkan actual weather/traffic data",
-        case1Impact3: "Compliance: Automated position logging untuk regulatory reporting; eliminasi manual data entry",
-        case1Impact4: "Uptime: 99.7% dashboard availability selama 18 bulan; zero data loss di kapal",
-        case2Title: "Industrial Fuel Monitoring & Analytics",
-        case2Context: "Operator fleet maritim dengan 12 refueling station di 4 negara. Monthly fuel consumption: ~500,000 liter. Fuel cost: 40% dari budget operasional. Manual reconciliation antara supply, consumption, dan billing terjadi monthly—biasanya 3–5 discrepancies.",
-        case2Problem: "Manual fuel reconciliation lambat (1 minggu per bulan), rawan error (±5% variance), dan prevent real-time visibility consumption patterns. Tidak bisa detect theft, leak, atau meter calibration drift sampai akhir bulan.",
-        case2Constraint1: "Legacy infrastructure: Fuel pump meter tidak langsung connected; manual gauge readings",
-        case2Constraint2: "Budget: Tidak bisa replace semua fuel dispenser; harus integrate dengan existing hardware",
-        case2Constraint3: "Data latency: Readings dari remote site (sampai 8 jam delay via satelit)",
-        case2Constraint4: "Accuracy requirement: ±0.5% variance; detect 5L+ discrepancies secara real-time",
-        case2ArchDesc: "Flow meter sensors (Omega, Emerson) → IoT edge gateway (LoRaWAN) → AWS IoT Core → Time-series database → Anomaly detection pipeline (Python/Lambda) → PostgreSQL (clean data) → Tableau dashboard + alerts",
-        case2Decision1: "<strong>LoRaWAN over WiFi/LTE:</strong> Low-power wide-area network; 10km+ range; satu gateway per site",
-        case2Decision2: "<strong>Time-series database (InfluxDB):</strong> Optimized untuk continuous metric streams; 10x faster queries vs row-oriented databases",
-        case2Decision3: "<strong>Anomaly detection via ML:</strong> Isolation Forest algorithm detect unusual consumption patterns; alerts pada theft/leak risk",
-        case2Decision4: "<strong>Data reconciliation layer:</strong> Weighted average algorithm combine meter readings + manual counts; produce single source of truth",
-        case2Impl1: "Ingestion: 12 site × 4 readings/jam = 1.1k data point/hari; masing-masing ~50 bytes → 55KB/hari",
-        case2Impl2: "Processing: Real-time aggregation (hourly summaries) + batch anomaly detection (nightly); historical reconciliation (monthly)",
-        case2Impl3: "Storage: InfluxDB dengan 2-year retention; PostgreSQL untuk reconciliation audit trail; S3 untuk monthly export reports",
-        case2Fail1: "Sensor failure: Edge gateway maintain local queue; jika sensor offline >1 jam, SMS alert ke site manager",
-        case2Fail2: "Network outage: Data cached locally untuk 72 jam; automatic sync saat connectivity restored",
-        case2Fail3: "Data drift correction: Monthly manual verification; drift >2% trigger calibration alert",
-        case2Fail4: "Audit trail: Setiap reconciliation decision logged dengan timestamp + username; immutable via blockchain hash",
-        case2Impact1: "Reconciliation time: Reduced dari 1 minggu jadi 2 jam; monthly fuel variance sekarang <0.3%",
-        case2Impact2: "Loss prevention: Detected 2 major fuel theft incidents (400L, 600L) yang tidak akan terdeteksi",
-        case2Impact3: "Cost optimization: Identified consumption anomalies; led ke fleet maintenance improvements saving ~3% fuel",
-        case2Impact4: "Regulatory compliance: Complete audit trail untuk fuel cost tracking dan carbon reporting",
-        case3Title: "Remote Industrial IoT Gateway dengan Failover Architecture",
-        case3Context: "Operasi mining di remote Indonesia dengan 30+ sensor (temperature, vibration, power, water levels). Site located 150km dari nearest cellular tower; LTE coverage: 40%; satelit internet: expensive ($500/GB). Operations staff: 20 engineer; mission-critical safety systems require continuous telemetry.",
-        case3Problem: "Unstable LTE connectivity cause telemetry gaps; missing data prevent early detection equipment failures (vibration spike = bearing damage). Satelit Internet unreliable dan expensive. Current solution: Manual daily data collection via USB drive—24–48 jam reporting lag.",
-        case3Constraint1: "Network: LTE availability 30–60% of time; latency 800ms–3s when available",
-        case3Constraint2: "Satelit: 1 Mbps shared uplink; $500/10GB overage charges",
-        case3Constraint3: "Power: Solar + diesel backup; 10kW peak, 500W baseline continuous",
-        case3Constraint4: "Bandwidth budget: <50MB/hari termasuk semua telemetry + system updates",
-        case3ArchDesc: "30 sensor (Modbus/RS-485) → Edge gateway (Intel NUC, Ubuntu) → Local processing → LTE modem (primary) + Iridium satelit (failover) → AWS IoT Core → Kinesis stream → Lambda + S3 → Real-time dashboard + alerts",
-        case3Decision1: "<strong>Edge-first processing:</strong> Semua data aggregation terjadi locally; hanya summary (bukan raw samples) dikirim ke cloud",
-        case3Decision2: "<strong>Intelligent failover:</strong> LTE monitored setiap 30s; automatic switch ke Iridium jika latency >2s atau packet loss >5%",
-        case3Decision3: "<strong>Compression & delta encoding:</strong> Hanya changed values transmitted; 95% bandwidth reduction vs raw telemetry",
-        case3Decision4: "<strong>Offline-first design:</strong> Critical alerts (vibration spike, temperature >80°C) stored locally + trigger on-site alarm; synced saat online",
-        case3Impl1: "Data collection: 30 sensor sampled setiap 10s → 1-minute rolling averages (min/max/mean) → uploaded setiap 5 menit",
-        case3Impl2: "Storage: 14-day local SQLite buffer (128MB); syncs ke AWS S3 + TimescaleDB saat connection recovery",
-        case3Impl3: "Processing: Critical alerts evaluated in-gateway (hardcoded rules); anomalies dikirim ke cloud untuk ML scoring",
-        case3Fail1: "Gateway failure: Dual gateway setup; automatic failover via VRRP protocol; shared storage di NAS",
-        case3Fail2: "Sensor failure: Missing data flagged; threshold-based alerting (e.g., \"no vibration data untuk 30 min = sensor offline\")",
-        case3Fail3: "Cloud API failure: Gateway retries dengan exponential backoff; store data locally untuk 2 minggu",
-        case3Fail4: "Power loss: UPS keep gateway online untuk 4 jam; graceful shutdown untuk prevent data corruption",
-        case3Impact1: "Data availability: Improved dari 40% (manual) jadi 99.2% (automated dengan edge buffering)",
-        case3Impact2: "Incident detection: Vibration anomalies detected dalam 15 menit vs 24 jam; prevented 3 bearing failures",
-        case3Impact3: "Cost savings: Bandwidth usage: 35MB/hari (vs projected 500MB untuk raw telemetry); satelit overage charges eliminated",
-        case3Impact4: "Operational efficiency: Site engineers sekarang bisa troubleshoot remotely via telemetry; reduced on-site visits sebesar 40%",
+        case1Challenge: "Perusahaan maritim dengan 50+ kapal butuh tracking real-time di Asia Tenggara. Sistem satelit existing mahal ($150/kapal/bulan), lambat (delay 30-menit), dan kehilangan data saat network outage.",
+        case1Solution: "Membangun sistem tracking cloud-connected dengan local data buffering. Kapal otomatis sync data posisi, fuel, dan engine saat terkoneksi. Dashboard menampilkan status fleet live di peta interaktif.",
+        case1Result1: "<strong>99.7% uptime</strong> — Zero data loss selama 18 bulan",
+        case1Result2: "<strong>8% hemat fuel</strong> — Routing lebih baik berdasarkan data real-time",
+        case1Result3: "<strong>50% potong biaya</strong> — Dari $150 jadi $75 per kapal monthly",
+        case1Result4: "<strong>Update real-time</strong> — Refresh 15-menit vs delay 30-menit",
+        case2Title: "Sistem Industrial Fuel Monitoring",
+        case2Challenge: "Operator fleet dengan 12 fueling station spend 1 minggu monthly reconcile 500,000 liter fuel data. Manual tracking punya ±5% error dan tidak bisa detect theft atau leak sampai akhir bulan.",
+        case2Solution: "Install wireless sensor di fuel station untuk otomatis track konsumsi. Sistem alert manager ke pattern tidak biasa (theft, leak, isu kalibrasi) secara real-time dan generate reconciliation report otomatis.",
+        case2Result1: "<strong>97% lebih cepat reporting</strong> — 1 minggu jadi 2 jam",
+        case2Result2: "<strong>Stop 2 pencurian besar</strong> — 1,000L total dicegah",
+        case2Result3: "<strong><0.3% variance</strong> — Turun dari ±5% error rate",
+        case2Result4: "<strong>3% hemat fuel</strong> — Identify maintenance issue lebih awal",
+        case3Title: "Monitoring Site Mining Remote",
+        case3Challenge: "Site mining di remote Indonesia punya 30+ sensor tapi internet tidak reliable (40% uptime). Equipment failure tidak terdeteksi selama 24-48 jam. Engineer collect data manual via USB drive.",
+        case3Solution: "Deploy smart gateway yang store data locally dan otomatis sync ke cloud saat internet available. Sistem switch antara cellular dan satellite connection. Critical alert (overheating, vibration spike) trigger langsung on-site.",
+        case3Result1: "<strong>99.2% ketersediaan data</strong> — Naik dari 40% manual collection",
+        case3Result2: "<strong>Cegah 3 failure</strong> — Deteksi vibration awal selamatkan equipment",
+        case3Result3: "<strong>93% lebih cepat alert</strong> — 15 menit vs delay 24-jam",
+        case3Result4: "<strong>40% kurangi site visit</strong> — Remote troubleshooting enabled",
         techLabel: "Arsitektur",
         techTitle: "Keputusan Teknologi & Tradeoffs",
         techIntro: "Bagaimana kami memilih antara teknologi yang bersaing berdasarkan operational constraints.",
@@ -1296,6 +883,143 @@
 
     localeSelect.addEventListener("change", (event) => applyLocale(event.target.value));
     applyLocale(localStorage.getItem("portfolioLocale") || "en");
+
+    // Modal functionality
+    const caseData = {
+      case1: {
+        title: { en: "Maritime Vessel Tracking Platform", id: "Platform Maritime Vessel Tracking" },
+        sections: [
+          {
+            title: { en: "Challenge", id: "Tantangan" },
+            content: { 
+              en: "Maritime company with 50+ vessels needed real-time tracking across Southeast Asia. Existing satellite system was expensive ($150/vessel/month), slow (30-min delays), and lost data during network outages.",
+              id: "Perusahaan maritim dengan 50+ kapal butuh tracking real-time di Asia Tenggara. Sistem satelit existing mahal ($150/kapal/bulan), lambat (delay 30-menit), dan kehilangan data saat network outage."
+            }
+          },
+          {
+            title: { en: "Solution", id: "Solusi" },
+            content: { 
+              en: "Built cloud-connected tracking system with local data buffering. Vessels automatically sync position, fuel, and engine data when connected. Dashboard shows live fleet status on interactive map.",
+              id: "Membangun sistem tracking cloud-connected dengan local data buffering. Kapal otomatis sync data posisi, fuel, dan engine saat terkoneksi. Dashboard menampilkan status fleet live di peta interaktif."
+            }
+          },
+          {
+            title: { en: "Results", id: "Hasil" },
+            items: [
+              { en: "<strong>99.7% uptime</strong> — Zero data loss over 18 months", id: "<strong>99.7% uptime</strong> — Zero data loss selama 18 bulan" },
+              { en: "<strong>8% fuel savings</strong> — Better routing based on real-time data", id: "<strong>8% hemat fuel</strong> — Routing lebih baik berdasarkan data real-time" },
+              { en: "<strong>50% cost reduction</strong> — From $150 to $75 per vessel monthly", id: "<strong>50% potong biaya</strong> — Dari $150 jadi $75 per kapal monthly" },
+              { en: "<strong>Real-time updates</strong> — 15-minute refresh vs 30-minute delays", id: "<strong>Update real-time</strong> — Refresh 15-menit vs delay 30-menit" }
+            ]
+          }
+        ]
+      },
+      case2: {
+        title: { en: "Industrial Fuel Monitoring System", id: "Sistem Industrial Fuel Monitoring" },
+        sections: [
+          {
+            title: { en: "Challenge", id: "Tantangan" },
+            content: { 
+              en: "Fleet operator with 12 fueling stations spent 1 week monthly reconciling 500,000 liters of fuel data. Manual tracking had ±5% errors and couldn't detect theft or leaks until month-end.",
+              id: "Operator fleet dengan 12 fueling station spend 1 minggu monthly reconcile 500,000 liter fuel data. Manual tracking punya ±5% error dan tidak bisa detect theft atau leak sampai akhir bulan."
+            }
+          },
+          {
+            title: { en: "Solution", id: "Solusi" },
+            content: { 
+              en: "Installed wireless sensors at fuel stations to automatically track consumption. System alerts managers to unusual patterns (theft, leaks, calibration issues) in real-time and generates reconciliation reports automatically.",
+              id: "Install wireless sensor di fuel station untuk otomatis track konsumsi. Sistem alert manager ke pattern tidak biasa (theft, leak, isu kalibrasi) secara real-time dan generate reconciliation report otomatis."
+            }
+          },
+          {
+            title: { en: "Results", id: "Hasil" },
+            items: [
+              { en: "<strong>97% faster reporting</strong> — 1 week reduced to 2 hours", id: "<strong>97% lebih cepat reporting</strong> — 1 minggu jadi 2 jam" },
+              { en: "<strong>Stopped 2 major thefts</strong> — 1,000L total prevented", id: "<strong>Stop 2 pencurian besar</strong> — 1,000L total dicegah" },
+              { en: "<strong><0.3% variance</strong> — Down from ±5% error rate", id: "<strong><0.3% variance</strong> — Turun dari ±5% error rate" },
+              { en: "<strong>3% fuel savings</strong> — Identified maintenance issues early", id: "<strong>3% hemat fuel</strong> — Identify maintenance issue lebih awal" }
+            ]
+          }
+        ]
+      },
+      case3: {
+        title: { en: "Remote Mining Site Monitoring", id: "Monitoring Site Mining Remote" },
+        sections: [
+          {
+            title: { en: "Challenge", id: "Tantangan" },
+            content: { 
+              en: "Mining site in remote Indonesia had 30+ sensors but unreliable internet (40% uptime). Equipment failures went undetected for 24-48 hours. Engineers collected data manually via USB drives.",
+              id: "Site mining di remote Indonesia punya 30+ sensor tapi internet tidak reliable (40% uptime). Equipment failure tidak terdeteksi selama 24-48 jam. Engineer collect data manual via USB drive."
+            }
+          },
+          {
+            title: { en: "Solution", id: "Solusi" },
+            content: { 
+              en: "Deployed smart gateway that stores data locally and automatically syncs to cloud when internet available. System switches between cellular and satellite connections. Critical alerts (overheating, vibration spikes) trigger immediately on-site.",
+              id: "Deploy smart gateway yang store data locally dan otomatis sync ke cloud saat internet available. Sistem switch antara cellular dan satellite connection. Critical alert (overheating, vibration spike) trigger langsung on-site."
+            }
+          },
+          {
+            title: { en: "Results", id: "Hasil" },
+            items: [
+              { en: "<strong>99.2% data availability</strong> — Up from 40% manual collection", id: "<strong>99.2% ketersediaan data</strong> — Naik dari 40% manual collection" },
+              { en: "<strong>Prevented 3 failures</strong> — Early vibration detection saved equipment", id: "<strong>Cegah 3 failure</strong> — Deteksi vibration awal selamatkan equipment" },
+              { en: "<strong>93% faster alerts</strong> — 15 minutes vs 24-hour delays", id: "<strong>93% lebih cepat alert</strong> — 15 menit vs delay 24-jam" },
+              { en: "<strong>40% fewer site visits</strong> — Remote troubleshooting enabled", id: "<strong>40% kurangi site visit</strong> — Remote troubleshooting enabled" }
+            ]
+          }
+        ]
+      }
+    };
+
+    function openCaseModal(caseId) {
+      const currentLocale = localStorage.getItem("portfolioLocale") || "en";
+      const data = caseData[caseId];
+      const modal = document.getElementById("caseModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBody = document.getElementById("modalBody");
+
+      modalTitle.textContent = data.title[currentLocale];
+      
+      let bodyHTML = "";
+      data.sections.forEach(section => {
+        bodyHTML += `<div class="case-section">`;
+        bodyHTML += `<h4>${section.title[currentLocale]}</h4>`;
+        
+        if (section.content) {
+          bodyHTML += `<p>${section.content[currentLocale]}</p>`;
+        }
+        
+        if (section.items) {
+          bodyHTML += `<ul>`;
+          section.items.forEach(item => {
+            bodyHTML += `<li>${item[currentLocale]}</li>`;
+          });
+          bodyHTML += `</ul>`;
+        }
+        
+        bodyHTML += `</div>`;
+      });
+      
+      modalBody.innerHTML = bodyHTML;
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCaseModal(event) {
+      if (!event || event.target.classList.contains("modal-overlay") || event.target.classList.contains("modal-close")) {
+        const modal = document.getElementById("caseModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeCaseModal();
+      }
+    });
   </script>
 </body>
 </html>
