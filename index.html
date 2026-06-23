@@ -52,11 +52,24 @@
     .card{background:var(--white);padding:30px}
     .card p{font-weight:700;color:#252525}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .timeline{display:grid;gap:18px}
+    .timeline-item{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--white);padding:22px;position:relative}
+    .timeline-item:nth-child(2n){background:var(--yellow)}
+    .timeline-marker{width:18px;height:18px;margin-top:6px;background:var(--ink);border:4px solid var(--white);box-shadow:0 0 0 4px var(--ink)}
+    .timeline-item:nth-child(2n) .timeline-marker{border-color:var(--yellow)}
+    .timeline-item h3{font-size:1.2rem;line-height:1.1;text-transform:uppercase;margin-bottom:8px}
+    .timeline-meta{display:inline-block;margin-bottom:12px;padding:5px 8px;background:var(--ink);color:var(--white);border:3px solid var(--ink);font-size:.72rem;font-weight:900;text-transform:uppercase}
+    .timeline-item p{font-weight:700;color:#272727}
     .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
     .tag{background:var(--yellow);border:3px solid var(--ink);padding:8px 11px;font-weight:900;text-transform:uppercase;font-size:.82rem}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .project{background:var(--ink);color:var(--white);padding:28px;transition:transform .16s ease,box-shadow .16s ease}
     .project:hover{transform:translate(-4px,-4px);box-shadow:14px 14px 0 var(--ink)}
+    .project-media{margin-bottom:18px;overflow:hidden;border:4px solid var(--white);background:#111}
+    .project-media a{display:block;position:relative;cursor:pointer}
+    .project-media a::after{content:"🔍 View Full Size";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);color:var(--white);font-size:.85rem;font-weight:900;text-transform:uppercase;opacity:0;transition:opacity .2s ease}
+    .project-media a:hover::after{opacity:1}
+    .project-media img{display:block;width:100%;height:220px;object-fit:cover}
     .project h3,.case h3{font-size:1.32rem;line-height:1.1;text-transform:uppercase;margin-bottom:16px}
     .project p{color:#e7e7e7;font-weight:700}
     .project:nth-child(2){background:#20311f}
@@ -139,6 +152,7 @@
         </select>
         <div class="nav-links">
           <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#experience" data-i18n="navExperience">Experience</a>
           <a href="#projects" data-i18n="navProjects">Projects</a>
           <a href="#cases" data-i18n="navCases">Cases</a>
           <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
@@ -194,6 +208,49 @@
       </div>
     </section>
 
+    <section id="experience">
+      <div class="container">
+        <div class="title-row">
+          <div><span class="label" data-i18n="experienceLabel">Experience</span><h2 class="title" data-i18n="experienceTitle">Work Timeline</h2></div>
+          <p class="section-copy" data-i18n="experienceIntro">A compact timeline of roles and responsibilities that shaped the systems I build today.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item neo">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div>
+              <span class="timeline-meta" data-i18n="timeline4Meta">2023 - Present</span>
+              <h3 data-i18n="timeline4Title">Software Engineer</h3>
+              <p data-i18n="timeline4Body">Building telemetry platforms, industrial dashboards, cloud services, and workflow automation for operational teams.</p>
+            </div>
+          </article>
+          <article class="timeline-item neo">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div>
+              <span class="timeline-meta" data-i18n="timeline3Meta">2021 - 2023</span>
+              <h3 data-i18n="timeline3Title">System Integrator</h3>
+              <p data-i18n="timeline3Body">Connecting field devices, backend APIs, MQTT messaging, and reporting layers into dependable production systems.</p>
+            </div>
+          </article>
+          <article class="timeline-item neo">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div>
+              <span class="timeline-meta" data-i18n="timeline2Meta">2019 - 2021</span>
+              <h3 data-i18n="timeline2Title">IoT Developer</h3>
+              <p data-i18n="timeline2Body">Developing remote monitoring and data collection systems for vessel tracking, fuel monitoring, and industrial telemetry.</p>
+            </div>
+          </article>
+          <article class="timeline-item neo">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div>
+              <span class="timeline-meta" data-i18n="timeline1Meta">2017 - 2019</span>
+              <h3 data-i18n="timeline1Title">Web Developer</h3>
+              <p data-i18n="timeline1Body">Building internal web applications, admin panels, and database-backed tools that supported daily operations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
       <div class="container">
         <div class="title-row">
@@ -201,9 +258,30 @@
           <p class="section-copy" data-i18n="projectsIntro">Maritime monitoring, industrial reporting, and remote-site telemetry built around real operational constraints.</p>
         </div>
         <div class="grid">
-          <article class="project neo"><h3 data-i18n="project1Title">Vessel Tracking Platform</h3><p data-i18n="project1Body">Real-time GPS and fleet monitoring dashboard for maritime operations, built around live location data and operational reporting.</p></article>
-          <article class="project neo"><h3 data-i18n="project2Title">Fuel Monitoring System</h3><p data-i18n="project2Body">Industrial fuel inventory and consumption analytics with sensor integration, reconciliation support, and reporting workflows.</p></article>
-          <article class="project neo"><h3 data-i18n="project3Title">Remote IoT Gateway</h3><p data-i18n="project3Body">LTE and satellite failover telemetry architecture for remote sites where connectivity is unreliable and data loss matters.</p></article>
+          <article class="project neo">
+            <div class="project-media">
+              <a href="assets/images/project-1.png" target="_blank" rel="noopener">
+                <img src="assets/images/project-1.png" alt="Screenshot of Vessel Tracking Platform">
+              </a>
+            </div>
+            <h3 data-i18n="project1Title">Vessel Tracking Platform</h3><p data-i18n="project1Body">Real-time GPS and fleet monitoring dashboard for maritime operations, built around live location data and operational reporting.</p>
+          </article>
+          <article class="project neo">
+            <div class="project-media">
+              <a href="assets/images/project-2.png" target="_blank" rel="noopener">
+                <img src="assets/images/project-2.png" alt="Screenshot of Fuel Monitoring System">
+              </a>
+            </div>
+            <h3 data-i18n="project2Title">Fuel Monitoring System</h3><p data-i18n="project2Body">Industrial fuel inventory and consumption analytics with sensor integration, reconciliation support, and reporting workflows.</p>
+          </article>
+          <article class="project neo">
+            <div class="project-media">
+              <a href="assets/images/project-3.png" target="_blank" rel="noopener">
+                <img src="assets/images/project-3.png" alt="Screenshot of Remote IoT Gateway">
+              </a>
+            </div>
+            <h3 data-i18n="project3Title">Remote IoT Gateway</h3><p data-i18n="project3Body">LTE and satellite failover telemetry architecture for remote sites where connectivity is unreliable and data loss matters.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -276,6 +354,7 @@
         navAria: "Primary navigation",
         localeSelect: "Select language",
         navAbout: "About",
+        navExperience: "Experience",
         navProjects: "Projects",
         navCases: "Cases",
         navArchitecture: "Architecture",
@@ -294,6 +373,21 @@
         aboutP1: "I am a Software Engineer and System Integrator with more than 8 years of experience building web applications, telemetry platforms, industrial IoT solutions, and cloud-based systems.",
         aboutP2: "My work focuses on reliable data flow, clear operational visibility, maintainable integration, and practical software that supports maritime and industrial teams.",
         aboutP3: "Core expertise includes vessel tracking, fuel monitoring, GPS telemetry, AWS cloud infrastructure, MQTT communication, real-time analytics, and enterprise software integration.",
+        experienceLabel: "Experience",
+        experienceTitle: "Work Timeline",
+        experienceIntro: "A compact timeline of roles and responsibilities that shaped the systems I build today.",
+        timeline4Meta: "2023 - Present",
+        timeline4Title: "Software Engineer",
+        timeline4Body: "Building telemetry platforms, industrial dashboards, cloud services, and workflow automation for operational teams.",
+        timeline3Meta: "2021 - 2023",
+        timeline3Title: "System Integrator",
+        timeline3Body: "Connecting field devices, backend APIs, MQTT messaging, and reporting layers into dependable production systems.",
+        timeline2Meta: "2019 - 2021",
+        timeline2Title: "IoT Developer",
+        timeline2Body: "Developing remote monitoring and data collection systems for vessel tracking, fuel monitoring, and industrial telemetry.",
+        timeline1Meta: "2017 - 2019",
+        timeline1Title: "Web Developer",
+        timeline1Body: "Building internal web applications, admin panels, and database-backed tools that supported daily operations.",
         projectsLabel: "Selected Work",
         projectsTitle: "Featured Projects",
         projectsIntro: "Maritime monitoring, industrial reporting, and remote-site telemetry built around real operational constraints.",
@@ -348,6 +442,7 @@
         navAria: "Navigasi utama",
         localeSelect: "Pilih bahasa",
         navAbout: "Tentang",
+        navExperience: "Pengalaman",
         navProjects: "Proyek",
         navCases: "Studi Kasus",
         navArchitecture: "Arsitektur",
@@ -366,6 +461,21 @@
         aboutP1: "Saya adalah Software Engineer dan System Integrator dengan pengalaman lebih dari 8 tahun dalam membangun aplikasi web, platform telemetry, solusi industrial IoT, dan sistem berbasis cloud.",
         aboutP2: "Fokus pekerjaan saya adalah aliran data yang andal, visibilitas operasional yang jelas, integrasi yang mudah dirawat, dan software praktis untuk mendukung tim maritim dan industri.",
         aboutP3: "Keahlian utama saya mencakup vessel tracking, fuel monitoring, GPS telemetry, infrastruktur AWS cloud, komunikasi MQTT, real-time analytics, dan integrasi software enterprise.",
+        experienceLabel: "Pengalaman",
+        experienceTitle: "Timeline Kerja",
+        experienceIntro: "Timeline ringkas tentang peran dan tanggung jawab yang membentuk sistem yang saya bangun saat ini.",
+        timeline4Meta: "2023 - Sekarang",
+        timeline4Title: "Software Engineer",
+        timeline4Body: "Membangun platform telemetry, dashboard industri, layanan cloud, dan otomasi workflow untuk tim operasional.",
+        timeline3Meta: "2021 - 2023",
+        timeline3Title: "System Integrator",
+        timeline3Body: "Menghubungkan perangkat lapangan, backend API, messaging MQTT, dan layer pelaporan menjadi sistem produksi yang andal.",
+        timeline2Meta: "2019 - 2021",
+        timeline2Title: "IoT Developer",
+        timeline2Body: "Mengembangkan sistem monitoring jarak jauh dan pengumpulan data untuk vessel tracking, fuel monitoring, dan telemetry industri.",
+        timeline1Meta: "2017 - 2019",
+        timeline1Title: "Web Developer",
+        timeline1Body: "Membangun aplikasi web internal, admin panel, dan tools berbasis database untuk mendukung operasional harian.",
         projectsLabel: "Karya Pilihan",
         projectsTitle: "Proyek Unggulan",
         projectsIntro: "Pemantauan maritim, pelaporan industri, dan telemetry lokasi remote yang dibangun dari kebutuhan operasional nyata.",
