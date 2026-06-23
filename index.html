@@ -128,7 +128,7 @@
             <div class="timeline-marker" aria-hidden="true"></div>
             <div>
               <span class="timeline-meta" data-i18n="timeline3Meta">2023 - Present</span>
-              <h3 data-i18n="timeline3Title">Software Engineer</h3>
+              <h3 data-i18n="timeline4Title">Software Engineer</h3>
               <p data-i18n="timeline3Body">Building telemetry platforms, industrial dashboards, cloud services, and workflow automation for operational teams.</p>
             </div>
           </article>
@@ -136,8 +136,8 @@
             <div class="timeline-marker" aria-hidden="true"></div>
             <div>
               <span class="timeline-meta" data-i18n="timeline2Meta">2020 - 2022</span>
-              <h3 data-i18n="timeline2Title">System Integrator</h3>
-              <p data-i18n="timeline2Body">Connecting field devices, backend APIs, MQTT messaging, and reporting layers into dependable production systems.</p>
+              <h3 data-i18n="timeline3Title">System Integrator</h3>
+              <p data-i18n="timeline3Body">Connecting field devices, backend APIs, MQTT messaging, and reporting layers into dependable production systems.</p>
             </div>
           </article>
           <article class="timeline-item neo">
@@ -236,10 +236,10 @@
         </div>
         <div style="display:grid;gap:28px;">
           <article class="case neo">
-            <h3 data-i18n="reliabilityStory1Title">Network Outage: Satellite Failover Protocol</h3>
-            <p data-i18n="reliabilityStory1Desc">Maritime operations require continuous position updates even when LTE fails. Our system automatically detects when LTE latency exceeds 2 seconds or packet loss exceeds 5% for 30 seconds, then switches to Iridium satellite connectivity.</p>
-            <div class="scenario" data-i18n="reliabilityStory1Scenario"><strong>Scenario:</strong> A vessel loses LTE signal entering international waters. System detects outage, queued messages are flushed over satellite link (higher cost, lower bandwidth, but uninterrupted monitoring).</div>
-            <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory1Mit">Hardcoded latency/packet-loss thresholds trigger automatic failover. Critical alerts (collision risk, fire) are sent via both channels. Cost impact: extra $50/month per vessel, but prevents catastrophic blind spots.</span></div>
+            <h3 data-i18n="reliabilityStory1Title">Loss of Vessel Visibility: Real-Time Monitoring and Automated Reporting</h3>
+            <p data-i18n="reliabilityStory1Desc">Maritime asset owners and charterers require continuous visibility of vessel position, movement patterns, and fuel consumption. Without a monitoring system, vessels operate in a blind spot, making it difficult to verify operational status, voyage progress, fuel efficiency, and compliance with charter agreements. The system provides real-time monitoring dashboards and automatically distributes daily operational reports.</p>
+            <div class="scenario" data-i18n="reliabilityStory1Scenario"><strong>Scenario:</strong> A vessel is operating on an inter-island route for several days. The owner and charterer need to track voyage progress, verify that the vessel follows the planned route, and monitor fuel consumption trends. Without automated monitoring, stakeholders must rely on manual reporting from the crew, creating delays, inaccuracies, and limited visibility into vessel operations.</div>
+            <div class="mitigation"><strong data-i18n="mitigation">Mitigation:</strong> <span data-i18n="reliabilityStory1Mit">GPS and onboard telemetry devices continuously transmit vessel position, speed, heading, engine parameters, and fuel consumption to a centralized monitoring platform. Real-time dashboards provide operational visibility, while automated daily reports summarize vessel location, distance traveled, engine running hours, fuel usage, and operational exceptions. Alert notifications are generated when predefined conditions occur, such as route deviations, abnormal fuel consumption, or prolonged inactivity.</span></div>
           </article>
 
           <article class="case neo">
@@ -407,14 +407,17 @@
         reliabilityLabel: "Engineering",
         reliabilityTitle: "Production-Grade Resilience",
         reliabilityIntro: "Real-world failure scenarios from production systems and how they're prevented or recovered from.",
-        reliabilityStory1Title: "Network Outage: Satellite Failover Protocol",
-        reliabilityStory1Desc: "Maritime operations require continuous position updates even when LTE fails. Our system automatically detects when LTE latency exceeds 2 seconds or packet loss exceeds 5% for 30 seconds, then switches to Iridium satellite connectivity.",
-        reliabilityStory1Scenario: "<strong>Scenario:</strong> A vessel loses LTE signal entering international waters. System detects outage, queued messages are flushed over satellite link (higher cost, lower bandwidth, but uninterrupted monitoring).",
-        reliabilityStory1Mit: "Hardcoded latency/packet-loss thresholds trigger automatic failover. Critical alerts (collision risk, fire) are sent via both channels. Cost impact: extra $50/month per vessel, but prevents catastrophic blind spots.",
-        reliabilityStory2Title: "Device Failure: Edge Gateway Redundancy",
-        reliabilityStory2Desc: "A single gateway in a remote mining site collects data from 30+ sensors. If the gateway crashes, all telemetry is lost. We deploy dual gateways with automatic failover using VRRP protocol (Virtual Router Redundancy).",
-        reliabilityStory2Scenario: "<strong>Scenario:</strong> Primary gateway power-fails during heavy rain. Backup gateway detects missing heartbeat within 3 seconds and takes over. Sensors switch to backup gateway automatically via ARP announcement.",
-        reliabilityStory2Mit: "Dual NUC setup with shared NAS storage (24h local buffering). UPS provides 4-hour hold time for graceful degradation. Total cost: ~$2k extra, but eliminates single point of failure for mission-critical monitoring.",
+        
+        reliabilityStory1Title: "Loss of Vessel Visibility: Real-Time Monitoring and Automated Reporting",
+        reliabilityStory1Desc: "Maritime asset owners and charterers require continuous visibility of vessel position, movement patterns, and fuel consumption. Without a monitoring system, vessels operate in a blind spot, making it difficult to verify operational status, voyage progress, fuel efficiency, and compliance with charter agreements. The system provides real-time monitoring dashboards and automatically distributes daily operational reports.",
+        reliabilityStory1Scenario: "<strong>Scenario:</strong> A vessel is operating on an inter-island route for several days. The owner and charterer need to track voyage progress, verify that the vessel follows the planned route, and monitor fuel consumption trends. Without automated monitoring, stakeholders must rely on manual reporting from the crew, creating delays, inaccuracies, and limited visibility into vessel operations.",
+        reliabilityStory1Mit: "GPS and onboard telemetry devices continuously transmit vessel position, speed, heading, engine parameters, and fuel consumption to a centralized monitoring platform. Real-time dashboards provide operational visibility, while automated daily reports summarize vessel location, distance traveled, engine running hours, fuel usage, and operational exceptions. Alert notifications are generated when predefined conditions occur, such as route deviations, abnormal fuel consumption, or prolonged inactivity.",
+        
+        reliabilityStory2Title: "Lack of Fuel Distribution Visibility: Fuel Truck Monitoring and Operational Digitalization",
+        reliabilityStory2Desc: "Companies operating large fleets of heavy equipment across multiple sites require an efficient and transparent fuel distribution process. Without an integrated system, coordination between dispatch administrators and field operators relies heavily on phone calls, messaging applications, and manual paperwork. Fuel delivery records are maintained manually, reporting is time-consuming, and management has limited visibility into field operations. As a result, company owners cannot verify completed fuel deliveries, monitor fuel truck activities, or obtain accurate and timely operational reports.",
+        reliabilityStory2Scenario: "<strong>Scenario:</strong> A mining, construction, or plantation company operates dozens of heavy equipment units spread across multiple work locations. Fuel tanker trucks are dispatched daily to replenish equipment and ensure uninterrupted operations. Dispatch administrators manually coordinate delivery schedules with drivers and field personnel. Once deliveries are completed, operators submit handwritten records or spreadsheet-based reports that must be consolidated manually. Company owners have no real-time visibility into fuel delivery status, delivered fuel volumes, or the current location of fuel tanker trucks.",
+        reliabilityStory2Mit: "A Fuel Distribution Management System integrates GPS tracking, digital work orders, electronic fuel delivery records, and automated reporting into a centralized platform. Dispatch administrators can schedule fuel deliveries through the system, while field operators confirm fuel transactions using mobile devices. Fuel tanker truck locations are continuously monitored in real time through a central dashboard. Every fuel distribution activity is automatically recorded, including timestamp, GPS location, fuel volume delivered, receiving equipment, and operator identity. Daily operational reports and fuel distribution summaries are generated automatically without manual data consolidation.",
+        
         reliabilityStory3Title: "Data Loss: Offline-First Buffering",
         reliabilityStory3Desc: "Cloud APIs fail. Satellite connectivity drops. Internet storms cause packet loss. Traditional systems lose data in these scenarios. Our offshore systems buffer all data locally first, sync when healthy.",
         reliabilityStory3Scenario: "<strong>Scenario:</strong> AWS IoT Core becomes unreachable for 8 hours due to DDoS. Local SQLite buffer on every edge gateway stores 14 days of raw telemetry. When connectivity restores, queued messages replay in order, zero data loss.",
@@ -423,6 +426,7 @@
         reliabilityStory4Desc: "Sensor reads garbage data. Network corrupts packets. Database constraints are violated. Corrupted data cascades through systems. We validate early and degrade gracefully rather than crash.",
         reliabilityStory4Scenario: "<strong>Scenario:</strong> Temperature sensor returns -999°C (sensor malfunction). System flags the data point, logs to audit trail, but does NOT block the pipeline. Dashboard shows the reading with a warning badge. Alert only triggers if pattern repeats (outlier vs sensor death).",
         reliabilityStory4Mit: "Multi-layer validation: edge gateway validates ranges (temp -40 to 150°C), backend validates patterns (isolation forest anomaly detection), database has CHECK constraints. Failed validation = quarantine + audit log, never crash. Operators see exactly what data is suspect.",
+        
         mitigation: "Mitigation:",
         architectureLabel: "Architecture",
         architectureTitle: "Telemetry Flow",
@@ -587,22 +591,27 @@
         reliabilityLabel: "Engineering",
         reliabilityTitle: "Resiliensi Tingkat Produksi",
         reliabilityIntro: "Skenario kegagalan real-world dari sistem produksi dan bagaimana mereka dicegah atau dipulihkan.",
-        reliabilityStory1Title: "Network Outage: Satellite Failover Protocol",
-        reliabilityStory1Desc: "Operasi maritim memerlukan update posisi berkelanjutan bahkan saat LTE gagal. Sistem kami otomatis detect saat LTE latency exceed 2 detik atau packet loss exceed 5% untuk 30 detik, kemudian switch ke Iridium satellite connectivity.",
-        reliabilityStory1Scenario: "<strong>Skenario:</strong> Sebuah kapal kehilangan signal LTE entering international waters. Sistem detect outage, queued messages flushed over satellite link (cost lebih tinggi, bandwidth lebih rendah, tapi monitoring uninterrupted).",
-        reliabilityStory1Mit: "Hardcoded latency/packet-loss thresholds trigger automatic failover. Critical alerts (collision risk, fire) sent via dua channels. Cost impact: extra $50/bulan per kapal, tapi prevent catastrophic blind spots.",
-        reliabilityStory2Title: "Device Failure: Edge Gateway Redundancy",
-        reliabilityStory2Desc: "Single gateway di remote mining site collect data dari 30+ sensor. Jika gateway crash, semua telemetry hilang. Kami deploy dual gateway dengan automatic failover using VRRP protocol (Virtual Router Redundancy).",
-        reliabilityStory2Scenario: "<strong>Skenario:</strong> Primary gateway power-fail saat heavy rain. Backup gateway detect missing heartbeat dalam 3 detik dan take over. Sensors switch ke backup gateway otomatis via ARP announcement.",
-        reliabilityStory2Mit: "Dual NUC setup dengan shared NAS storage (24h local buffering). UPS provide 4-hour hold time untuk graceful degradation. Total cost: ~$2k extra, tapi eliminate single point of failure untuk mission-critical monitoring.",
+        
+        reliabilityStory1Title: "Titik Buta Operasional Kapal: Pemantauan Real-Time dan Pelaporan Otomatis",
+        reliabilityStory1Desc: "Pengelola kapal dan penyarter kapal membutuhkan visibilitas penuh terhadap posisi kapal, pergerakan kapal, serta konsumsi bahan bakar selama operasional berlangsung. Tanpa sistem pemantauan yang memadai, kapal akan berada dalam kondisi blind spot (titik buta) sehingga sulit untuk mengetahui lokasi aktual kapal, progres pelayaran, efisiensi penggunaan bahan bakar, maupun kepatuhan terhadap rencana perjalanan yang telah ditetapkan. Sistem ini menyediakan pemantauan secara real-time dan laporan operasional harian yang dikirim secara otomatis kepada pihak terkait.",
+        reliabilityStory1Scenario: "<strong>Skenario:</strong> Sebuah kapal sedang menjalankan pelayaran antar pulau selama beberapa hari. Pengelola kapal dan penyarter memerlukan informasi terkini mengenai posisi kapal, arah pergerakan, kecepatan, serta konsumsi bahan bakar untuk memastikan operasional berjalan sesuai rencana. Tanpa sistem pemantauan otomatis, informasi hanya dapat diperoleh melalui laporan manual dari awak kapal yang berpotensi terlambat, tidak akurat, atau tidak tersedia saat dibutuhkan.",
+        reliabilityStory1Mit: "Perangkat GPS dan sistem telemetri di atas kapal secara otomatis mengirimkan data posisi, kecepatan, arah haluan, parameter mesin, dan konsumsi bahan bakar ke platform pemantauan terpusat. Dashboard real-time memberikan visibilitas penuh terhadap kondisi operasional kapal, sementara laporan harian (daily report) dikirim secara otomatis kepada pengelola kapal dan penyarter. Sistem juga dapat menghasilkan notifikasi apabila terjadi penyimpangan rute, konsumsi bahan bakar yang tidak normal, atau kondisi operasional lainnya yang memerlukan perhatian.",
+        
+        reliabilityStory2Title: "Kurangnya Visibilitas Distribusi Bahan Bakar: Monitoring Armada Tangki dan Digitalisasi Operasional",
+        reliabilityStory2Desc: "Perusahaan yang mengoperasikan banyak alat berat di berbagai lokasi membutuhkan proses distribusi bahan bakar yang terkoordinasi, terdokumentasi, dan dapat dipantau secara real-time. Tanpa sistem yang terintegrasi, koordinasi antara admin dan petugas lapangan dilakukan secara manual melalui telepon atau pesan singkat, pencatatan distribusi masih menggunakan formulir manual, dan laporan operasional dibuat secara terpisah. Akibatnya, pemilik perusahaan kesulitan memantau status distribusi bahan bakar, lokasi mobil tangki, serta realisasi pengiriman yang telah dilakukan.",
+        reliabilityStory2Scenario: "<strong>Skenario:</strong> Sebuah perusahaan pertambangan atau konstruksi memiliki puluhan alat berat yang tersebar di beberapa area kerja. Setiap hari, mobil tangki harus mendistribusikan bahan bakar ke alat-alat berat tersebut agar operasional tidak terganggu. Admin membuat jadwal distribusi dan berkoordinasi dengan sopir mobil tangki melalui komunikasi manual. Setelah distribusi selesai, petugas lapangan menyerahkan laporan penggunaan bahan bakar secara manual yang kemudian direkap kembali oleh admin. Pemilik perusahaan tidak memiliki akses langsung untuk memverifikasi apakah distribusi telah dilakukan sesuai jadwal, berapa volume yang telah disalurkan, dan di mana posisi mobil tangki saat ini.",
+        reliabilityStory2Mit: "Sistem manajemen distribusi bahan bakar mengintegrasikan pemantauan GPS mobil tangki, penugasan distribusi digital, pencatatan volume penyaluran secara elektronik, dan pelaporan otomatis. Admin dapat membuat jadwal distribusi melalui aplikasi, sementara petugas lapangan melakukan konfirmasi pengiriman melalui perangkat mobile. Lokasi mobil tangki dapat dipantau secara real-time pada dashboard pusat. Setiap aktivitas distribusi tercatat secara otomatis lengkap dengan waktu, lokasi, volume bahan bakar, kendaraan tujuan, dan identitas petugas. Laporan operasional harian dan rekap distribusi dapat dihasilkan secara otomatis tanpa proses rekap manual.Dual NUC setup dengan shared NAS storage (24h local buffering). UPS provide 4-hour hold time untuk graceful degradation. Total cost: ~$2k extra, tapi eliminate single point of failure untuk mission-critical monitoring.",
+        
         reliabilityStory3Title: "Data Loss: Offline-First Buffering",
         reliabilityStory3Desc: "Cloud API fail. Satelit connectivity drop. Internet storm cause packet loss. Traditional system kehilangan data dalam scenario ini. Offshore system kami buffer semua data locally dulu, sync saat healthy.",
         reliabilityStory3Scenario: "<strong>Skenario:</strong> AWS IoT Core become unreachable selama 8 jam karena DDoS. Local SQLite buffer di setiap edge gateway store 14 hari raw telemetry. Saat connectivity restore, queued messages replay in order, zero data loss.",
         reliabilityStory3Mit: "Semua data written ke local SQLite sebelum cloud transmission. Message ID + timestamp enable deduplication di recovery. Critical alerts (vibration spike) trigger local hardcoded rules immediately, tidak wait cloud scoring. Extra local storage: 128MB per gateway.",
+        
         reliabilityStory4Title: "Data Corruption: Graceful Degradation",
         reliabilityStory4Desc: "Sensor read garbage data. Network corrupt packets. Database constraint violated. Corrupted data cascade through systems. Kami validate early dan degrade gracefully daripada crash.",
         reliabilityStory4Scenario: "<strong>Skenario:</strong> Temperature sensor return -999°C (sensor malfunction). Sistem flag data point, log ke audit trail, tapi TIDAK block pipeline. Dashboard show reading dengan warning badge. Alert hanya trigger jika pattern repeat (outlier vs sensor death).",
         reliabilityStory4Mit: "Multi-layer validation: edge gateway validate ranges (temp -40 ke 150°C), backend validate patterns (isolation forest anomaly detection), database punya CHECK constraints. Failed validation = quarantine + audit log, never crash. Operator lihat exactly apa data yang suspect.",
+        
         mitigation: "Mitigasi:",
         architectureLabel: "Arsitektur",
         architectureTitle: "Alur Telemetry",
