@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adityas Rucitra Pradipta | Software Engineer</title>
+  <meta name="description" content="Software Engineer and System Integrator building telemetry, IoT, vessel monitoring, cloud infrastructure, and industrial automation systems.">
+  <meta property="og:title" content="Adityas Rucitra Pradipta | Software Engineer">
+  <meta property="og:description" content="Software Engineer and System Integrator building telemetry, IoT, vessel monitoring, cloud infrastructure, and industrial automation systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#050505;--paper:#f7f0df;--white:#fffdf6;--yellow:#ffe14d;--green:#62e889;--red:#ff6b6b;--blue:#73c7ff;--purple:#b8a1ff;--muted:#3f3f3f;--shadow:10px 10px 0 var(--ink)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;overflow-x:hidden}
+    a{color:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    .neo{border:4px solid var(--ink);box-shadow:var(--shadow)}
+    .nav{position:sticky;top:0;z-index:20;background:var(--yellow);border-bottom:4px solid var(--ink)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0}
+    .brand{font-weight:900;text-decoration:none;letter-spacing:.02em}
+    .nav-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .nav-links{display:flex;gap:10px;flex-wrap:wrap}
+    .nav-links a{padding:8px 10px;text-decoration:none;font-size:.84rem;font-weight:900;text-transform:uppercase;border:3px solid transparent}
+    .nav-links a:hover,.nav-links a:focus-visible{background:var(--white);border-color:var(--ink);outline:none}
+    .locale-select{height:42px;background:var(--white);border:4px solid var(--ink);font:900 .84rem Inter,Arial,sans-serif;text-transform:uppercase;padding:0 10px;box-shadow:5px 5px 0 var(--ink);cursor:pointer;max-width:100%}
+    .locale-select:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+    main{display:block}
+    section{padding:82px 0;scroll-margin-top:90px}
+    .hero{min-height:calc(100vh - 68px);display:flex;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:stretch}
+    .hero-main{background:var(--yellow);padding:44px;display:flex;flex-direction:column;justify-content:space-between;min-height:560px}
+    .eyebrow{display:inline-block;width:max-content;max-width:100%;background:var(--ink);color:var(--white);padding:8px 12px;font-size:.78rem;font-weight:900;text-transform:uppercase;margin-bottom:26px}
+    h1{font-size:clamp(3.2rem,8vw,7.8rem);line-height:.82;letter-spacing:0;font-weight:900;text-transform:uppercase;max-width:9ch}
+    .lead{max-width:720px;margin-top:26px;font-size:1.16rem;font-weight:700;color:#1b1b1b}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;background:var(--white);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);text-decoration:none;font-weight:900;text-transform:uppercase;text-align:center;transition:transform .16s ease,box-shadow .16s ease}
+    .button:hover,.button:focus-visible{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);outline:none}
+    .button.dark{background:var(--ink);color:var(--white);box-shadow:5px 5px 0 #666}
+    .hero-side{display:grid;gap:22px}
+    .stat{padding:26px;background:var(--white)}
+    .stat:nth-child(2){background:var(--green)}
+    .stat:nth-child(3){background:var(--blue)}
+    .stat strong{display:block;font-size:3.1rem;line-height:1;font-weight:900}
+    .stat span{display:block;margin-top:10px;font-weight:900;text-transform:uppercase}
+    .title-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end;margin-bottom:26px}
+    .label{font-size:.82rem;font-weight:900;text-transform:uppercase;background:var(--ink);color:var(--white);display:inline-block;padding:7px 10px;margin-bottom:14px}
+    .title{font-size:clamp(2.2rem,5vw,4.6rem);line-height:.9;font-weight:900;text-transform:uppercase}
+    .section-copy{font-weight:700;color:var(--muted);font-size:1.04rem}
+    .card{background:var(--white);padding:30px}
+    .card p{font-weight:700;color:#252525}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .tag{background:var(--yellow);border:3px solid var(--ink);padding:8px 11px;font-weight:900;text-transform:uppercase;font-size:.82rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .project{background:var(--ink);color:var(--white);padding:28px;transition:transform .16s ease,box-shadow .16s ease}
+    .project:hover{transform:translate(-4px,-4px);box-shadow:14px 14px 0 var(--ink)}
+    .project h3,.case h3{font-size:1.32rem;line-height:1.1;text-transform:uppercase;margin-bottom:16px}
+    .project p{color:#e7e7e7;font-weight:700}
+    .project:nth-child(2){background:#20311f}
+    .project:nth-child(3){background:#17283b}
+    .case{background:var(--white);padding:28px}
+    .case h4{display:inline-block;margin-top:20px;margin-bottom:8px;padding:5px 8px;background:var(--yellow);border:3px solid var(--ink);font-size:.72rem;font-weight:900;text-transform:uppercase}
+    .case p{font-weight:700;color:#272727}
+    .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+    .node{min-height:150px;background:var(--white);padding:18px;position:relative}
+    .node:nth-child(odd){background:var(--yellow)}
+    .node:nth-child(2){background:var(--green)}
+    .node:nth-child(4){background:var(--blue)}
+    .node:nth-child(6){background:var(--purple)}
+    .node span{display:block;font-size:2rem;line-height:1;font-weight:900;margin-bottom:16px}
+    .node strong{display:block;text-transform:uppercase;line-height:1.05}
+    .node p{margin-top:10px;font-weight:700;color:#272727;font-size:.92rem}
+    .contact{background:var(--red);padding:34px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+    .contact p{font-weight:800;margin-top:12px}
+    .socials{display:flex;flex-wrap:wrap;gap:12px}
+    .social{background:var(--white);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px 14px;text-decoration:none;font-weight:900;text-transform:uppercase;text-align:center;transition:transform .16s ease,box-shadow .16s ease}
+    .social:hover,.social:focus-visible{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);outline:none}
+    footer{padding:28px 0;text-align:center;font-weight:900;border-top:4px solid var(--ink);background:var(--white)}
+        @media(max-width:1180px){
+      .flow{grid-template-columns:repeat(3,1fr)}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:1fr .72fr}
+    }
+    @media(max-width:940px){
+      :root{--shadow:8px 8px 0 var(--ink)}
+      .nav .container{align-items:flex-start;flex-direction:column}
+      .nav-actions{align-items:flex-start;flex-direction:column;width:100%}
+      .nav-links{width:100%}
+      .nav-links a{min-height:42px;display:inline-flex;align-items:center}
+      .hero{min-height:auto;padding:50px 0 0}
+      .hero-grid,.title-row,.about-grid,.contact{grid-template-columns:1fr}
+      .hero-main{min-height:auto;padding:30px}
+      .grid,.flow{grid-template-columns:1fr}
+      .contact{align-items:start}
+      section{padding:58px 0}
+      .stat strong{font-size:2.5rem}
+    }
+    @media(max-width:700px){
+      .container{width:min(100% - 28px,1180px)}
+      .nav .container{gap:12px;padding:12px 0}
+      .brand{font-size:.94rem}
+      .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .nav-links a{justify-content:center;background:var(--white);border-color:var(--ink);font-size:.76rem;padding:8px 6px}
+      .locale-select{width:100%;height:46px}
+      .hero{padding-top:28px}
+      .hero-main{padding:22px}
+      h1{font-size:clamp(2.55rem,17vw,4.4rem);max-width:8ch}
+      .title{font-size:clamp(2rem,13vw,3.35rem)}
+      .lead,.section-copy{font-size:1rem}
+      .eyebrow{font-size:.68rem;line-height:1.35;white-space:normal}
+      .card,.project,.case,.contact{padding:22px}
+      .node{min-height:auto}
+      .socials,.actions{width:100%}
+      .button,.social{width:100%;min-height:52px}
+    }
+    @media(max-width:430px){
+      :root{--shadow:6px 6px 0 var(--ink)}
+      .container{width:min(100% - 22px,1180px)}
+      .nav-links{grid-template-columns:1fr}
+      .hero-main{padding:18px}
+      .stat{padding:20px}
+      .label{font-size:.74rem}
+      .tag{font-size:.76rem;padding:7px 9px}
+      .card,.project,.case,.contact{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation" data-i18n-aria-label="navAria">
+    <div class="container">
+      <a class="brand" href="#">Adityas Rucitra Pradipta</a>
+      <div class="nav-actions">
+        <select class="locale-select" id="localeSelect" aria-label="Select language" data-i18n-aria-label="localeSelect">
+          <option value="en">English</option>
+          <option value="id">Bahasa</option>
+        </select>
+        <div class="nav-links">
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#projects" data-i18n="navProjects">Projects</a>
+          <a href="#cases" data-i18n="navCases">Cases</a>
+          <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-main neo">
+            <div>
+              <p class="eyebrow" data-i18n="heroEyebrow">Software Engineer / System Integrator / IoT Developer</p>
+              <h1>Adityas Rucitra Pradipta</h1>
+              <p class="lead" data-i18n="heroLead">I build telemetry platforms, vessel monitoring systems, industrial IoT solutions, cloud infrastructure, and enterprise software for maritime and industrial operations.</p>
+            </div>
+            <div class="actions">
+              <a class="button dark" href="mailto:adityasrucitra@gmail.com" data-i18n="heroCta">Start a Conversation</a>
+              <a class="button" href="#projects" data-i18n="heroWork">View Work</a>
+            </div>
+          </div>
+          <aside class="hero-side" aria-label="Professional highlights" data-i18n-aria-label="highlightsAria">
+            <div class="stat neo"><strong>8+</strong><span data-i18n="statExperience">Years Experience</span></div>
+            <div class="stat neo"><strong>B2B</strong><span data-i18n="statSoftware">Operational Software</span></div>
+            <div class="stat neo"><strong>24/7</strong><span data-i18n="statTelemetry">Telemetry Systems</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="title-row">
+          <div><span class="label" data-i18n="aboutLabel">About</span><h2 class="title" data-i18n="aboutTitle">Engineering Focus</h2></div>
+          <p class="section-copy" data-i18n="aboutIntro">Systems that connect devices, cloud services, backend APIs, dashboards, and business workflows into a dependable operating layer.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card neo">
+            <p data-i18n="aboutP1">I am a Software Engineer and System Integrator with more than 8 years of experience building web applications, telemetry platforms, industrial IoT solutions, and cloud-based systems.</p>
+            <br>
+            <p data-i18n="aboutP2">My work focuses on reliable data flow, clear operational visibility, maintainable integration, and practical software that supports maritime and industrial teams.</p>
+          </div>
+          <div class="card neo">
+            <p data-i18n="aboutP3">Core expertise includes vessel tracking, fuel monitoring, GPS telemetry, AWS cloud infrastructure, MQTT communication, real-time analytics, and enterprise software integration.</p>
+            <div class="tags">
+              <span class="tag">PHP</span><span class="tag">CodeIgniter</span><span class="tag">MySQL</span><span class="tag">NodeJS</span><span class="tag">AWS</span><span class="tag">MQTT</span><span class="tag">Telemetry</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="title-row">
+          <div><span class="label" data-i18n="projectsLabel">Selected Work</span><h2 class="title" data-i18n="projectsTitle">Featured Projects</h2></div>
+          <p class="section-copy" data-i18n="projectsIntro">Maritime monitoring, industrial reporting, and remote-site telemetry built around real operational constraints.</p>
+        </div>
+        <div class="grid">
+          <article class="project neo"><h3 data-i18n="project1Title">Vessel Tracking Platform</h3><p data-i18n="project1Body">Real-time GPS and fleet monitoring dashboard for maritime operations, built around live location data and operational reporting.</p></article>
+          <article class="project neo"><h3 data-i18n="project2Title">Fuel Monitoring System</h3><p data-i18n="project2Body">Industrial fuel inventory and consumption analytics with sensor integration, reconciliation support, and reporting workflows.</p></article>
+          <article class="project neo"><h3 data-i18n="project3Title">Remote IoT Gateway</h3><p data-i18n="project3Body">LTE and satellite failover telemetry architecture for remote sites where connectivity is unreliable and data loss matters.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="container">
+        <div class="title-row">
+          <div><span class="label" data-i18n="casesLabel">Case Studies</span><h2 class="title" data-i18n="casesTitle">Problem To System</h2></div>
+          <p class="section-copy" data-i18n="casesIntro">Each project starts from a field problem, then turns device data into useful visibility.</p>
+        </div>
+        <div class="grid">
+          <article class="case neo">
+            <h3 data-i18n="case1Title">Maritime Vessel Tracking Platform</h3>
+            <h4 data-i18n="caseProblem">Problem</h4><p data-i18n="case1Problem">Shipping teams needed real-time vessel visibility across distributed assets.</p>
+            <h4 data-i18n="caseSolution">Solution</h4><p data-i18n="case1Solution">Built a telemetry platform with GPS, MQTT, AWS, and dashboards to centralize live vessel data.</p>
+            <h4 data-i18n="caseImpact">Impact</h4><p data-i18n="case1Impact">Improved monitoring, reduced manual checking, and supported automated reporting.</p>
+          </article>
+          <article class="case neo">
+            <h3 data-i18n="case2Title">Industrial Fuel Monitoring</h3>
+            <h4 data-i18n="caseProblem">Problem</h4><p data-i18n="case2Problem">Manual fuel reconciliation was slow, inconsistent, and error-prone.</p>
+            <h4 data-i18n="caseSolution">Solution</h4><p data-i18n="case2Solution">Integrated flow meters, sensors, and cloud reporting for accurate fuel visibility.</p>
+            <h4 data-i18n="caseImpact">Impact</h4><p data-i18n="case2Impact">Continuous inventory visibility and faster operational reporting.</p>
+          </article>
+          <article class="case neo">
+            <h3 data-i18n="case3Title">Remote Industrial IoT Gateway</h3>
+            <h4 data-i18n="caseProblem">Problem</h4><p data-i18n="case3Problem">Unstable connectivity caused telemetry gaps in remote environments.</p>
+            <h4 data-i18n="caseSolution">Solution</h4><p data-i18n="case3Solution">Designed an edge gateway with local buffering and failover to preserve telemetry during unstable connectivity.</p>
+            <h4 data-i18n="caseImpact">Impact</h4><p data-i18n="case3Impact">More reliable data delivery for remote assets and field operations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="container">
+        <div class="title-row">
+          <div><span class="label" data-i18n="architectureLabel">Architecture</span><h2 class="title" data-i18n="architectureTitle">Telemetry Flow</h2></div>
+          <p class="section-copy" data-i18n="architectureIntro">A simple field-to-dashboard path from hardware signals to operational decisions.</p>
+        </div>
+        <div class="flow" aria-label="System architecture flow" data-i18n-aria-label="architectureAria">
+          <div class="node neo"><span>01</span><strong data-i18n="node1Title">GPS Device</strong><p data-i18n="node1Body">Captures position and field signals.</p></div>
+          <div class="node neo"><span>02</span><strong data-i18n="node2Title">Edge Gateway</strong><p data-i18n="node2Body">Buffers and forwards telemetry.</p></div>
+          <div class="node neo"><span>03</span><strong>AWS IoT Core</strong><p data-i18n="node3Body">Receives MQTT messages securely.</p></div>
+          <div class="node neo"><span>04</span><strong data-i18n="node4Title">Backend API</strong><p data-i18n="node4Body">Processes events and rules.</p></div>
+          <div class="node neo"><span>05</span><strong>MySQL Database</strong><p data-i18n="node5Body">Stores operational history.</p></div>
+          <div class="node neo"><span>06</span><strong data-i18n="node6Title">Analytics Dashboard</strong><p data-i18n="node6Body">Turns data into decisions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact neo">
+          <div><span class="label" data-i18n="contactLabel">Contact</span><h2 class="title" data-i18n="contactTitle">Build Reliable Systems</h2><p data-i18n="contactBody">Available for software engineering, system integration, telemetry, IoT, and cloud infrastructure work.</p></div>
+          <div class="socials">
+            <a class="social" href="mailto:adityasrucitra@gmail.com" aria-label="Send email" data-i18n="contactEmail" data-i18n-aria-label="emailAria">Email</a>
+            <a class="social" href="https://github.com/adityasrucitra" aria-label="GitHub profile" data-i18n-aria-label="githubAria">GitHub</a>
+            <a class="social" href="https://linkedin.com/in/adityasrucitra" aria-label="LinkedIn profile" data-i18n-aria-label="linkedinAria">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-i18n="footer">&copy; 2026 Adityas Rucitra Pradipta</footer>
+
+  <script>
+    const translations = {
+      en: {
+        navAria: "Primary navigation",
+        localeSelect: "Select language",
+        navAbout: "About",
+        navProjects: "Projects",
+        navCases: "Cases",
+        navArchitecture: "Architecture",
+        navContact: "Contact",
+        heroEyebrow: "Software Engineer / System Integrator / IoT Developer",
+        heroLead: "I build telemetry platforms, vessel monitoring systems, industrial IoT solutions, cloud infrastructure, and enterprise software for maritime and industrial operations.",
+        heroCta: "Start a Conversation",
+        heroWork: "View Work",
+        highlightsAria: "Professional highlights",
+        statExperience: "Years Experience",
+        statSoftware: "Operational Software",
+        statTelemetry: "Telemetry Systems",
+        aboutLabel: "About",
+        aboutTitle: "Engineering Focus",
+        aboutIntro: "Systems that connect devices, cloud services, backend APIs, dashboards, and business workflows into a dependable operating layer.",
+        aboutP1: "I am a Software Engineer and System Integrator with more than 8 years of experience building web applications, telemetry platforms, industrial IoT solutions, and cloud-based systems.",
+        aboutP2: "My work focuses on reliable data flow, clear operational visibility, maintainable integration, and practical software that supports maritime and industrial teams.",
+        aboutP3: "Core expertise includes vessel tracking, fuel monitoring, GPS telemetry, AWS cloud infrastructure, MQTT communication, real-time analytics, and enterprise software integration.",
+        projectsLabel: "Selected Work",
+        projectsTitle: "Featured Projects",
+        projectsIntro: "Maritime monitoring, industrial reporting, and remote-site telemetry built around real operational constraints.",
+        project1Title: "Vessel Tracking Platform",
+        project1Body: "Real-time GPS and fleet monitoring dashboard for maritime operations, built around live location data and operational reporting.",
+        project2Title: "Fuel Monitoring System",
+        project2Body: "Industrial fuel inventory and consumption analytics with sensor integration, reconciliation support, and reporting workflows.",
+        project3Title: "Remote IoT Gateway",
+        project3Body: "LTE and satellite failover telemetry architecture for remote sites where connectivity is unreliable and data loss matters.",
+        casesLabel: "Case Studies",
+        casesTitle: "Problem To System",
+        casesIntro: "Each project starts from a field problem, then turns device data into useful visibility.",
+        caseProblem: "Problem",
+        caseSolution: "Solution",
+        caseImpact: "Impact",
+        case1Title: "Maritime Vessel Tracking Platform",
+        case1Problem: "Shipping teams needed real-time vessel visibility across distributed assets.",
+        case1Solution: "Built a telemetry platform with GPS, MQTT, AWS, and dashboards to centralize live vessel data.",
+        case1Impact: "Improved monitoring, reduced manual checking, and supported automated reporting.",
+        case2Title: "Industrial Fuel Monitoring",
+        case2Problem: "Manual fuel reconciliation was slow, inconsistent, and error-prone.",
+        case2Solution: "Integrated flow meters, sensors, and cloud reporting for accurate fuel visibility.",
+        case2Impact: "Continuous inventory visibility and faster operational reporting.",
+        case3Title: "Remote Industrial IoT Gateway",
+        case3Problem: "Unstable connectivity caused telemetry gaps in remote environments.",
+        case3Solution: "Designed an edge gateway with local buffering and failover to preserve telemetry during unstable connectivity.",
+        case3Impact: "More reliable data delivery for remote assets and field operations.",
+        architectureLabel: "Architecture",
+        architectureTitle: "Telemetry Flow",
+        architectureIntro: "A simple field-to-dashboard path from hardware signals to operational decisions.",
+        architectureAria: "System architecture flow",
+        node1Title: "GPS Device",
+        node1Body: "Captures position and field signals.",
+        node2Title: "Edge Gateway",
+        node2Body: "Buffers and forwards telemetry.",
+        node3Body: "Receives MQTT messages securely.",
+        node4Title: "Backend API",
+        node4Body: "Processes events and rules.",
+        node5Body: "Stores operational history.",
+        node6Title: "Analytics Dashboard",
+        node6Body: "Turns data into decisions.",
+        contactLabel: "Contact",
+        contactTitle: "Build Reliable Systems",
+        contactBody: "Available for software engineering, system integration, telemetry, IoT, and cloud infrastructure work.",
+        contactEmail: "Email",
+        emailAria: "Send email",
+        githubAria: "GitHub profile",
+        linkedinAria: "LinkedIn profile",
+        footer: "&copy; 2026 Adityas Rucitra Pradipta"
+      },
+      id: {
+        navAria: "Navigasi utama",
+        localeSelect: "Pilih bahasa",
+        navAbout: "Tentang",
+        navProjects: "Proyek",
+        navCases: "Studi Kasus",
+        navArchitecture: "Arsitektur",
+        navContact: "Kontak",
+        heroEyebrow: "Software Engineer / System Integrator / IoT Developer",
+        heroLead: "Saya membangun platform telemetry, sistem pemantauan kapal, solusi industrial IoT, infrastruktur cloud, dan software enterprise untuk operasi maritim dan industri.",
+        heroCta: "Mulai Diskusi",
+        heroWork: "Lihat Karya",
+        highlightsAria: "Ringkasan profesional",
+        statExperience: "Tahun Pengalaman",
+        statSoftware: "Software Operasional",
+        statTelemetry: "Sistem Telemetry",
+        aboutLabel: "Tentang",
+        aboutTitle: "Fokus Engineering",
+        aboutIntro: "Sistem yang menghubungkan perangkat, layanan cloud, backend API, dashboard, dan alur kerja bisnis menjadi layer operasional yang andal.",
+        aboutP1: "Saya adalah Software Engineer dan System Integrator dengan pengalaman lebih dari 8 tahun dalam membangun aplikasi web, platform telemetry, solusi industrial IoT, dan sistem berbasis cloud.",
+        aboutP2: "Fokus pekerjaan saya adalah aliran data yang andal, visibilitas operasional yang jelas, integrasi yang mudah dirawat, dan software praktis untuk mendukung tim maritim dan industri.",
+        aboutP3: "Keahlian utama saya mencakup vessel tracking, fuel monitoring, GPS telemetry, infrastruktur AWS cloud, komunikasi MQTT, real-time analytics, dan integrasi software enterprise.",
+        projectsLabel: "Karya Pilihan",
+        projectsTitle: "Proyek Unggulan",
+        projectsIntro: "Pemantauan maritim, pelaporan industri, dan telemetry lokasi remote yang dibangun dari kebutuhan operasional nyata.",
+        project1Title: "Platform Vessel Tracking",
+        project1Body: "Dashboard GPS real-time dan fleet monitoring untuk operasi maritim, dibangun dari data lokasi langsung dan kebutuhan pelaporan operasional.",
+        project2Title: "Sistem Fuel Monitoring",
+        project2Body: "Analitik inventori dan konsumsi fuel industri dengan integrasi sensor, dukungan rekonsiliasi, dan workflow pelaporan.",
+        project3Title: "Remote IoT Gateway",
+        project3Body: "Arsitektur telemetry dengan failover LTE dan satelit untuk lokasi remote ketika konektivitas tidak stabil dan kehilangan data perlu dihindari.",
+        casesLabel: "Studi Kasus",
+        casesTitle: "Masalah Ke Sistem",
+        casesIntro: "Setiap proyek dimulai dari masalah lapangan, lalu mengubah data perangkat menjadi visibilitas yang berguna.",
+        caseProblem: "Masalah",
+        caseSolution: "Solusi",
+        caseImpact: "Dampak",
+        case1Title: "Platform Maritime Vessel Tracking",
+        case1Problem: "Tim shipping membutuhkan visibilitas kapal secara real-time pada aset yang tersebar.",
+        case1Solution: "Membangun platform telemetry dengan GPS, MQTT, AWS, dan dashboard untuk menyatukan data kapal secara langsung.",
+        case1Impact: "Meningkatkan monitoring, mengurangi pengecekan manual, dan mendukung pelaporan otomatis.",
+        case2Title: "Industrial Fuel Monitoring",
+        case2Problem: "Rekonsiliasi fuel manual berjalan lambat, tidak konsisten, dan rawan error.",
+        case2Solution: "Mengintegrasikan flow meter, sensor, dan cloud reporting untuk visibilitas fuel yang akurat.",
+        case2Impact: "Visibilitas inventori berkelanjutan dan pelaporan operasional yang lebih cepat.",
+        case3Title: "Remote Industrial IoT Gateway",
+        case3Problem: "Konektivitas tidak stabil menyebabkan gap telemetry di lingkungan remote.",
+        case3Solution: "Merancang edge gateway dengan local buffering dan failover untuk menjaga telemetry saat konektivitas tidak stabil.",
+        case3Impact: "Pengiriman data lebih andal untuk aset remote dan operasi lapangan.",
+        architectureLabel: "Arsitektur",
+        architectureTitle: "Alur Telemetry",
+        architectureIntro: "Jalur sederhana dari perangkat lapangan ke dashboard analytics untuk mendukung keputusan operasional.",
+        architectureAria: "Alur arsitektur sistem",
+        node1Title: "Perangkat GPS",
+        node1Body: "Menangkap posisi dan sinyal lapangan.",
+        node2Title: "Edge Gateway",
+        node2Body: "Melakukan buffering dan meneruskan telemetry.",
+        node3Body: "Menerima pesan MQTT secara aman.",
+        node4Title: "Backend API",
+        node4Body: "Memproses event dan rule.",
+        node5Body: "Menyimpan histori operasional.",
+        node6Title: "Dashboard Analytics",
+        node6Body: "Mengubah data menjadi keputusan.",
+        contactLabel: "Kontak",
+        contactTitle: "Bangun Sistem Andal",
+        contactBody: "Tersedia untuk pekerjaan software engineering, system integration, telemetry, IoT, dan cloud infrastructure.",
+        contactEmail: "Email",
+        emailAria: "Kirim email",
+        githubAria: "Profil GitHub",
+        linkedinAria: "Profil LinkedIn",
+        footer: "&copy; 2026 Adityas Rucitra Pradipta"
+      }
+    };
+
+    const localeSelect = document.getElementById("localeSelect");
+
+    function applyLocale(locale) {
+      const dictionary = translations[locale] || translations.en;
+      document.documentElement.lang = locale === "id" ? "id" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) element.innerHTML = dictionary[key];
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        const key = element.dataset.i18nAriaLabel;
+        if (dictionary[key]) element.setAttribute("aria-label", dictionary[key]);
+      });
+      localeSelect.value = locale;
+      localStorage.setItem("portfolioLocale", locale);
+    }
+
+    localeSelect.addEventListener("change", (event) => applyLocale(event.target.value));
+    applyLocale(localStorage.getItem("portfolioLocale") || "en");
+  </script>
+</body>
+</html>
