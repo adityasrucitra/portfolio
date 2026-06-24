@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding @Bean | Aditya S Rucitra</title>
+    <meta name="description" content="Learn how Spring creates and manages objects using Dependency Injection.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="container">
+        <a class="brand" href="index.html">Adityas Rucitra Pradipta</a>
+        <div class="nav-actions">        
+          <div class="nav-links">
+            <a href="index.html#impact">Impact</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#cases">Cases</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="blog-list.html" class="active">Blog</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container" style="padding-top: 20px;">
+        <a href="blog-list.html" class="back"> ← BACK TO BLOG </a>
+
+        <header class="article-header neo">
+          <h1>Understanding @Bean in Spring Boot</h1>
+          <div class="meta" style="font-weight: 900; color: #666;">Published June 2026 · 10 min read · Spring Boot</div>
+        </header>
+
+        <div class="cover neo">
+          SPRING BOOT<br />
+          @Bean<br />
+          Dependency Injection
+        </div>
+
+        <article class="content neo">
+        <p>
+          Spring Boot uses Dependency Injection to manage application components
+          automatically.
+        </p>
+
+        <h2>What is @Bean?</h2>
+
+        <p>
+          @Bean tells Spring that the returned object should become a managed
+          bean inside the application context.
+        </p>
+
+        <pre>
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public PersonService personService() {
+        return new PersonService();
+    }
+
+}
+</pre
+        >
+
+        <h2>Why Use @Bean?</h2>
+
+        <p>
+          It allows you to register third-party classes or manually configure
+          objects before Spring injects them into other components.
+        </p>
+
+        <h2>How Spring Uses It</h2>
+
+        <p>
+          When the application starts, Spring scans configuration classes and
+          creates all beans inside the application context.
+        </p>
+
+        <pre>
+@Service
+public class UserService {
+
+    private final PersonService personService;
+
+    public UserService(PersonService personService) {
+        this.personService = personService;
+    }
+}
+</pre
+        >
+
+        <h2>Summary</h2>
+
+        <p>
+          Use @Bean whenever you need explicit control over object creation. For
+          most application components, @Component, @Service, and @Repository are
+          usually sufficient.
+        </p>
+
+          <section class="related">
+            <h3>Related Articles</h3>
+
+            <div class="related-grid">
+              <div class="related-card">AWS IoT Core for Industrial Systems</div>
+              <div class="related-card">Spring Boot Auto Configuration</div>
+              <div class="related-card">Understanding Dependency Injection</div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer>&copy; 2026 Adityas Rucitra Pradipta</footer>
+  </body>
+
+</html>
